@@ -29,11 +29,11 @@ struct KanjiJsonDecoder {
             do {
                 let decoder = JSONDecoder()
                 let kanjiResponse = try decoder.decode([Kanji].self, from: jsonData)
-                print("test: \(kanjiResponse)")
+                //print("test: \(kanjiResponse)")
                 
                 // Print the data
                 if let data = data, let stringResponse = String(data: data, encoding: .utf8) {
-                                print("Response \(stringResponse)")
+                                //print("Response \(stringResponse)")
                             }
                 
                 completion(.success(kanjiResponse))
@@ -42,7 +42,7 @@ struct KanjiJsonDecoder {
             } catch {
                 // Print the data
                 if let data = data, let stringResponse = String(data: data, encoding: .utf8) {
-                                print("Response \(stringResponse)")
+                                //print("Response \(stringResponse)")
                             }
                 completion(.failure(.canNotProcessData))
             }

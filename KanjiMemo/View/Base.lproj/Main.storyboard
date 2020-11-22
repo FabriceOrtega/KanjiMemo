@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mvZ-wk-q4F">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KanjiCell" id="PId-UT-qjV" customClass="KanjiTableViewCell" customModule="KanjiMemo" customModuleProvider="target">
@@ -130,20 +130,46 @@
                                     <outlet property="delegate" destination="eeb-1E-iBQ" id="PNr-dA-AEb"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYH-kx-rvy">
+                                <rect key="frame" x="10" y="776" width="34.5" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dYH-kx-rvy" secondAttribute="height" multiplier="21:22" id="43r-wm-FGg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" backgroundImage="switch.2" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="displayOnlySelectedKanji:" destination="eeb-1E-iBQ" eventType="touchUpInside" id="x6e-hN-MIh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Kanji displayed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEL-Nf-gdB">
+                                <rect key="frame" x="139.5" y="775" width="135.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Xc-95-3Gw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0Xc-95-3Gw" firstAttribute="bottom" secondItem="mvZ-wk-q4F" secondAttribute="bottom" id="Cqu-o4-2UP"/>
+                            <constraint firstItem="0Xc-95-3Gw" firstAttribute="bottom" secondItem="mvZ-wk-q4F" secondAttribute="bottom" constant="40" id="Cqu-o4-2UP"/>
                             <constraint firstItem="mvZ-wk-q4F" firstAttribute="top" secondItem="0Xc-95-3Gw" secondAttribute="top" id="FoP-tt-jKe"/>
+                            <constraint firstItem="zEL-Nf-gdB" firstAttribute="top" secondItem="mvZ-wk-q4F" secondAttribute="bottom" constant="2" id="I6M-Vk-jIF"/>
                             <constraint firstItem="mvZ-wk-q4F" firstAttribute="leading" secondItem="0Xc-95-3Gw" secondAttribute="leading" id="Pb3-ZU-0HZ"/>
+                            <constraint firstItem="zEL-Nf-gdB" firstAttribute="centerX" secondItem="zQK-jH-Een" secondAttribute="centerX" id="T1e-BT-wjt"/>
+                            <constraint firstItem="dYH-kx-rvy" firstAttribute="top" secondItem="mvZ-wk-q4F" secondAttribute="bottom" constant="2" id="bVi-Pj-cw0"/>
+                            <constraint firstItem="dYH-kx-rvy" firstAttribute="leading" secondItem="0Xc-95-3Gw" secondAttribute="leading" constant="10" id="eAr-sY-LRH"/>
                             <constraint firstItem="0Xc-95-3Gw" firstAttribute="trailing" secondItem="mvZ-wk-q4F" secondAttribute="trailing" id="fzy-rf-R0S"/>
+                            <constraint firstItem="0Xc-95-3Gw" firstAttribute="bottom" secondItem="dYH-kx-rvy" secondAttribute="bottom" constant="2" id="r1X-or-PCz"/>
+                            <constraint firstItem="0Xc-95-3Gw" firstAttribute="bottom" secondItem="zEL-Nf-gdB" secondAttribute="bottom" constant="2" id="xRs-o7-LXy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="voP-JT-90f"/>
                     <navigationItem key="navigationItem" id="aZS-7u-p1J"/>
                     <connections>
                         <outlet property="kanjiTableView" destination="mvZ-wk-q4F" id="V8e-87-WCj"/>
+                        <outlet property="numberOfKanji" destination="zEL-Nf-gdB" id="iCK-Gd-lte"/>
                         <segue destination="W8Z-gJ-HG8" kind="showDetail" identifier="toKanjiDetail" id="92B-y2-gCR"/>
                     </connections>
                 </viewController>
@@ -340,6 +366,7 @@
     <resources>
         <image name="chart.bar.doc.horizontal.fill" catalog="system" width="115" height="128"/>
         <image name="questionmark" catalog="system" width="96" height="128"/>
+        <image name="switch.2" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

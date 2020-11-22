@@ -13,7 +13,10 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // Outlet of the table view
     @IBOutlet weak var kanjiTableView: UITableView!
     
-    // Kanji list to be reloaded oyside the main queue
+    // Outlet to display the number of kanji
+    @IBOutlet weak var numberOfKanji: UILabel!
+    
+    // Kanji list to be reloaded outside the main queue
     var listKanji = [Kanji]() {
         didSet {
             DispatchQueue.main.async {
@@ -28,7 +31,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // To pass data to the detailled view
     var kanjiDetailData: Kanji!
     
-    //Instance of JSON decoder
+    //Instance of json decoder
     var decoder = KanjiJsonDecoder(session: URLSession(configuration: .default))
     
     // Search bar
@@ -39,16 +42,19 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // Search bar is empty
     var isSearchBarEmpty: Bool {
-      return searchController.searchBar.text?.isEmpty ?? true
+        return searchController.searchBar.text?.isEmpty ?? true
     }
     
     var isFiltering: Bool {
-      return searchController.isActive && !isSearchBarEmpty
+        return searchController.isActive && !isSearchBarEmpty
     }
+    
+    // Boolean to see if button od selected kanji display is active or not
+    var displaySelectedKanji = false
     
     // Parameter used to attribute filteredKanji array or listActivatedKAnji
     var kanjiUpdatedList: Kanji!
-
+    
     //MARK: View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +68,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             case .success(let kanji):
                 // en cas de success, attribuer les data extraites à la liste de user
                 self?.listKanji = kanji
-                //print(kanji)
+            //print(kanji)
             }
         }
         
@@ -81,20 +87,48 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Filtering method
     func filterContentForSearchText(_ searchText: String,
                                     category: Kanji? = nil) {
-      filteredKanji = listKanji.filter { (kanji: Kanji) -> Bool in
-        return kanji.meanings.joined(separator:", ").lowercased().contains(searchText.lowercased())
-      }
+        
+        // Create list of filtered kanji
+        filteredKanji = listKanji.filter { (kanji: Kanji) -> Bool in
+            return kanji.meanings.joined(separator:", ").lowercased().contains(searchText.lowercased())
+        }
+        
+        // If no result from the search
+        if filteredKanji == [] {
+            numberOfKanji.text = "No Kanji found"
+        }
+        
         kanjiTableView.reloadData()
     }
-
-
+    
+    // Button to show only selected Kanji
+    @IBAction func displayOnlySelectedKanji(_ sender: Any) {
+        // If no kanji selected
+        if listActivatedKAnji == [] {
+            numberOfKanji.text = "No Kanji selected"
+        }
+        
+        if displaySelectedKanji == false {
+            displaySelectedKanji = true
+        } else {
+            displaySelectedKanji = false
+        }
+        
+        kanjiTableView.reloadData()
+        
+    }
+    
+    
     // MARK: Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         // If filter
         if isFiltering {
             return filteredKanji.count
-          }
+        } else if displaySelectedKanji {
+            // Else if button "display selected kanji" is active
+            return listActivatedKAnji.count
+        }
         
         // If no filter
         return listKanji.count
@@ -104,10 +138,23 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // Attribute filtered array if filter is active
     func attributeKanjiFromCorrectList(row: Int){
+        // Text after the count of kanji
+        let kanjiNumberText = " Kanji displayed"
+        
         if isFiltering {
-          kanjiUpdatedList = filteredKanji[row]
+            kanjiUpdatedList = filteredKanji[row]
+            // Number of kanji displayed
+            numberOfKanji.text = String(filteredKanji.count) + kanjiNumberText
+            
+        } else if displaySelectedKanji {
+            kanjiUpdatedList = listActivatedKAnji[row]
+            // Number of kanji displayed
+            numberOfKanji.text = String(listActivatedKAnji.count) + kanjiNumberText
+            
         } else {
-          kanjiUpdatedList = listKanji[row]
+            kanjiUpdatedList = listKanji[row]
+            // Number of kanji displayed
+            numberOfKanji.text = String(listKanji.count) + kanjiNumberText
         }
     }
     
@@ -142,30 +189,30 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell!
     }
     
-
     
     // Switch method
     @objc func switchChanged(_ sender : UISwitch!){
-
+        
         // Call method to take kani from filetred list if filter is active
         attributeKanjiFromCorrectList(row: sender.tag)
         
         // Check status of switch
         if sender .isOn {
-            //Append listActivatedKAnji
+            //Append listActivatedKAnji and in CardCreator list
             listActivatedKAnji.append(kanjiUpdatedList)
             CardCreator.cardCreator.listActivatedKAnji.append(kanjiUpdatedList)
-            print(listActivatedKAnji)
+            //print(listActivatedKAnji)
             
         } else {
-            //Remove from listActivatedKAnji
+            //Remove from listActivatedKAnji and from CardCreator list
             if let index = listActivatedKAnji.firstIndex(of: kanjiUpdatedList) {
                 listActivatedKAnji.remove(at: index)
             }
             if let index = CardCreator.cardCreator.listActivatedKAnji.firstIndex(of: kanjiUpdatedList) {
                 CardCreator.cardCreator.listActivatedKAnji.remove(at: index)
             }
-            print(listActivatedKAnji)
+            //print(listActivatedKAnji)
+            kanjiTableView.reloadData()
             
         }
     }
@@ -175,12 +222,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: TableView delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Check if filtering
-        var kanjiUpdatedList: Kanji
-          if isFiltering {
-            kanjiUpdatedList = filteredKanji[indexPath.row]
-          } else {
-            kanjiUpdatedList = listKanji[indexPath.row]
-          }
+        attributeKanjiFromCorrectList(row: indexPath.row)
         
         // attribute the data
         let detailledKanji = kanjiUpdatedList
@@ -202,10 +244,10 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
 // MARK: Extension for search bar
 extension KanjiTableViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    let searchBar = searchController.searchBar
-    filterContentForSearchText(searchBar.text!)
-  }
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
 }
 
 

@@ -10,13 +10,13 @@ import Shuffle_iOS
 
 class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, SwipeCardStackDelegate {
     
-    // Instancoate the card stack
+    // Instanciate the Swipe card stack
     let cardStack = SwipeCardStack()
     
     // List of activated kanji for the quizz
     var cardImages: [UIImage?] = []
     
-    // Determine the card size
+    // Calculate the card size
     var cardWidth: CGFloat {
         return UIScreen.main.bounds.width - 40
     }
@@ -45,17 +45,12 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
         card.swipeDirections = [.left, .right]
         card.content = UIImageView(image: image)
         
-//        let footer = card.footer
-//        footer?.alpha = 1
-//        footer?.backgroundColor = .blue
-//        footer?.frame = CGRect(x: 0, y: -card.frame.height, width: card.frame.width, height: card.frame.height/2)
-        
         // Attribute colors to cards when swipped
         let leftOverlay = UIView()
-        leftOverlay.backgroundColor = .green
+        leftOverlay.backgroundColor = .purple
         
         let rightOverlay = UIView()
-        rightOverlay.backgroundColor = .red
+        rightOverlay.backgroundColor = .blue
         
         card.setOverlays([.left: leftOverlay, .right: rightOverlay])
         
@@ -90,6 +85,12 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     // Card swipe recognition
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
         print("Swiped \(direction) on \(String(describing: CardCreator.cardCreator.listActivatedKAnji[index].kanji))")
+        
+        if direction == SwipeDirection.left {
+            print("LEEEEFFFFFT")
+        } else if direction == SwipeDirection.right {
+            print("RIIIIIIGHT")
+        }
     }
     
     // Method to call an alert
