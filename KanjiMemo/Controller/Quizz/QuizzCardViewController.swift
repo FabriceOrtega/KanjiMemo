@@ -24,6 +24,12 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
         return UIScreen.main.bounds.height - 320
     }
     
+    // Set up a notification when card did swipe to the left
+    static let notificationDidSwipeLeft = Notification.Name("didSwipeCardLeft")
+    
+    // Set up a notification when card did swipe to the left
+    static let notificationDidSwipeRight = Notification.Name("didSwipeCardRight")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(cardStack)
@@ -66,8 +72,8 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     // Stack count method
     func numberOfCards(in cardStack: SwipeCardStack) -> Int {
         // Limit quizz to 25 Kanji
-        if cardImages.count > 25 {
-            return 25
+        if cardImages.count > QuizzGame.quizzGame.maxCardQuizz {
+            return QuizzGame.quizzGame.maxCardQuizz
         } else {
             return cardImages.count
         }
@@ -84,12 +90,14 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     
     // Card swipe recognition
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
-        print("Swiped \(direction) on \(String(describing: CardCreator.cardCreator.listActivatedKAnji[index].kanji))")
-        
+
         if direction == SwipeDirection.left {
-            print("LEEEEFFFFFT")
+            // Send notification that card swiped
+            NotificationCenter.default.post(name: QuizzCardViewController.notificationDidSwipeLeft, object: nil, userInfo: ["index": index])
+            
         } else if direction == SwipeDirection.right {
-            print("RIIIIIIGHT")
+            // Send notification that card swiped
+            NotificationCenter.default.post(name: QuizzCardViewController.notificationDidSwipeRight, object: nil, userInfo: ["index": index])
         }
     }
     

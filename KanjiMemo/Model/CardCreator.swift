@@ -53,7 +53,7 @@ public class CardCreator {
     
     // Method to create images from kanji activated list
     public func createKanjiImages() {
-        print(listActivatedKAnji.count)
+//        print(listActivatedKAnji.count)
         
         // Randomize the array
         listActivatedKAnji.shuffle()
@@ -63,7 +63,7 @@ public class CardCreator {
         
         // At least two kanji must be selected
         if listActivatedKAnji.count > 1 {
-            print(listActivatedKAnji.count)
+//            print(listActivatedKAnji.count)
             
             // Loop in the array, and create a UIImage per kanji and it to the list
             for i in 0...((listActivatedKAnji.count) - 1){
