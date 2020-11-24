@@ -193,7 +193,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // Switch method
     @objc func switchChanged(_ sender : UISwitch!){
         
-        // Call method to take kani from filetred list if filter is active
+        // Call method to take kanji from filetred list if filter is active
         attributeKanjiFromCorrectList(row: sender.tag)
         
         // Check status of switch

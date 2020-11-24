@@ -81,11 +81,7 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     
     // Calling the build method from activated kanji list
     func createCardStack(){
-        if CardCreator.cardCreator.listActivatedKAnji.count > 1 {
-            cardImages = CardCreator.cardCreator.cardImages
-        } else {
-            alert(title: "Error", message: "Please select at least two Kanji to start the quizz")
-        }
+        cardImages = CardCreator.cardCreator.cardImages
     }
     
     // Card swipe recognition

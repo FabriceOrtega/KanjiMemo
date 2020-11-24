@@ -55,21 +55,28 @@ class QuizzViewController: UIViewController {
 
     // Start quizz button
     @IBAction func startQuizz(_ sender: Any) {
-        // Create kanji cards
-        CardCreator.cardCreator.createKanjiImages()
         
-        // Generate the array of correct translation, wrong translation and position
-        QuizzGame.quizzGame.generateArrays()
-        // Set up the first one
-        setUpTestText(index: 0)
+        if CardCreator.cardCreator.listActivatedKAnji.count > 1 {
+            // Create kanji cards
+            CardCreator.cardCreator.createKanjiImages()
+            
+            // Generate the array of correct translation, wrong translation and position
+            QuizzGame.quizzGame.generateArrays()
+            // Set up the first one
+            setUpTestText(index: 0)
+            
+            // Reinitialize the score
+            QuizzGame.quizzGame.score = 0
+            // Set the score
+            setScoreLabel()
+            
+            // Call the QuizzCardVC view did laod to display the cards
+            self.quizzCardVC.viewDidLoad()
+        } else {
+            alert(title: "Error", message: "Please select at least two Kanji to start the quizz")
+        }
         
-        // Reinitialize the score
-        QuizzGame.quizzGame.score = 0
-        // Set the score
-        setScoreLabel()
         
-        // Call the QuizzCardVC view did laod to display the cards
-        self.quizzCardVC.viewDidLoad()
     }
     
 
@@ -140,6 +147,13 @@ class QuizzViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.scoreLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }
+    }
+    
+    // Method to call an alert
+    func alert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return self.present(alertVC, animated: true, completion: nil)
     }
 
 }

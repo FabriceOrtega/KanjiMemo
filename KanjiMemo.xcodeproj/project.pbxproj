@@ -22,6 +22,7 @@
 		1C940BF7256665120040FBB8 /* QuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BF6256665120040FBB8 /* QuizzViewController.swift */; };
 		1C940BFD25666AC80040FBB8 /* QuizzCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */; };
 		1C940C07256673520040FBB8 /* CardCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940C06256673520040FBB8 /* CardCreator.swift */; };
+		1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */; };
 		217F61EB6D4DF70920041883 /* Pods_KanjiMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE60BBF541E8054010C4C6EC /* Pods_KanjiMemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		1C940BF6256665120040FBB8 /* QuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewController.swift; sourceTree = "<group>"; };
 		1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCardViewController.swift; sourceTree = "<group>"; };
 		1C940C06256673520040FBB8 /* CardCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreator.swift; sourceTree = "<group>"; };
+		1CA9D66B256BF729003F0BBE /* KanjiMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiMemo.xcdatamodel; sourceTree = "<group>"; };
 		9A7FD7AAFC40D3FEEB6C19DC /* Pods-KanjiMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanjiMemo.debug.xcconfig"; path = "Target Support Files/Pods-KanjiMemo/Pods-KanjiMemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B792940683BD8C1A6CE8F906 /* Pods-KanjiMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanjiMemo.release.xcconfig"; path = "Target Support Files/Pods-KanjiMemo/Pods-KanjiMemo.release.xcconfig"; sourceTree = "<group>"; };
 		BE60BBF541E8054010C4C6EC /* Pods_KanjiMemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KanjiMemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,7 @@
 				1C369E03256076C400BA1A7D /* Assets.xcassets */,
 				1C369DFC256076C300BA1A7D /* SceneDelegate.swift */,
 				1C369DFA256076C300BA1A7D /* AppDelegate.swift */,
+				1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				1C369DFB256076C300BA1A7D /* AppDelegate.swift in Sources */,
 				1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */,
 				1C93365925611C7E00A6AE1C /* KanjiTableViewCell.swift in Sources */,
+				1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */,
 				1C940BFD25666AC80040FBB8 /* QuizzCardViewController.swift in Sources */,
 				1C1868BC2561627300A09B82 /* KanjiDetailViewController.swift in Sources */,
 				1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */,
@@ -497,6 +501,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1CA9D66B256BF729003F0BBE /* KanjiMemo.xcdatamodel */,
+			);
+			currentVersion = 1CA9D66B256BF729003F0BBE /* KanjiMemo.xcdatamodel */;
+			path = KanjiMemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1C369DEF256076C300BA1A7D /* Project object */;
 }
