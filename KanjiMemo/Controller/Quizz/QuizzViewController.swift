@@ -10,15 +10,15 @@ import Shuffle_iOS
 
 class QuizzViewController: UIViewController {
     
-    // Parameter for to show the path to the QuizzCardViewController
-    var quizzCardVC: QuizzCardViewController!
-    
     // Translation text labels (one correct, one wrong)
     @IBOutlet weak var leftText: UILabel!
     @IBOutlet weak var rightText: UILabel!
     
     //Score label
     @IBOutlet weak var scoreLabel: UILabel!
+    
+    // Parameter for to show the path to the QuizzCardViewController
+    var quizzCardVC: QuizzCardViewController!
     
     // View did load
     override func viewDidLoad() {
@@ -72,14 +72,12 @@ class QuizzViewController: UIViewController {
             
             // Call the QuizzCardVC view did laod to display the cards
             self.quizzCardVC.viewDidLoad()
+            
         } else {
             alert(title: "Error", message: "Please select at least two Kanji to start the quizz")
         }
-        
-        
     }
     
-
     
     func setUpTestText(index: Int){
         
@@ -102,14 +100,11 @@ class QuizzViewController: UIViewController {
         // Set next card
         setUpTestText(index: (notification.userInfo!["index"] as! Int)+1)
         
-        // Check if the quizz is correctly answered
-        if QuizzGame.quizzGame.randomPositionArray[notification.userInfo!["index"] as! Int] == 1 {
-            print("Correct")
-            QuizzGame.quizzGame.score += 1
-            animateScoreLabel()
-        } else {
-            print("Huuuuu")
-        }
+        // Call the quizz game method for left position (position 1)
+        QuizzGame.quizzGame.checkIfCorrectTranslation(index: (notification.userInfo!["index"] as! Int), position: 1)
+        
+        // Animate the score if correctly answered
+        animateScoreLabel(index: (notification.userInfo!["index"] as! Int), position: 1)
         
         // Refresh score
         setScoreLabel()
@@ -120,14 +115,11 @@ class QuizzViewController: UIViewController {
         // Set next card
         setUpTestText(index: (notification.userInfo!["index"] as! Int)+1)
         
-        // Check if the quizz is correctly answered
-        if QuizzGame.quizzGame.randomPositionArray[notification.userInfo!["index"] as! Int] == 2 {
-            print("Correct")
-            QuizzGame.quizzGame.score += 1
-            animateScoreLabel()
-        } else {
-            print("Huuuuu")
-        }
+        // Call the quizz game method  for left position (position 2)
+        QuizzGame.quizzGame.checkIfCorrectTranslation(index: (notification.userInfo!["index"] as! Int), position: 2)
+        
+        // Animate the score if correctly answered
+        animateScoreLabel(index: (notification.userInfo!["index"] as! Int), position: 2)
         
         // Refresh score
         setScoreLabel()
@@ -139,13 +131,16 @@ class QuizzViewController: UIViewController {
     }
     
     // Method to animate the score text label
-    func animateScoreLabel(){
-        // Scale briefly the label
-        UIView.animate(withDuration: 0.5) {
-            self.scoreLabel.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
-        }
-        UIView.animate(withDuration: 0.5) {
-            self.scoreLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+    func animateScoreLabel(index: Int, position: Int){
+        // Check if question has been correctly answered
+        if QuizzGame.quizzGame.randomPositionArray[index] == position {
+            // Scale briefly the label
+            UIView.animate(withDuration: 0.5) {
+                self.scoreLabel.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.scoreLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
         }
     }
     

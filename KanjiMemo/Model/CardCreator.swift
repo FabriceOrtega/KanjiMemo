@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 public class CardCreator {
     
     // Pattern singleton
     public static let cardCreator = CardCreator()
     
-    // List of kanji which switch is on
+    // List of kanji which switch is on (-> array to be saved with CoreData)
     var listActivatedKAnji: [Kanji] = []
     
     // Determine the card size

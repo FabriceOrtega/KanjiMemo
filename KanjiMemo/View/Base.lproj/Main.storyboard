@@ -91,7 +91,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxC-Fz-pFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1960.8695652173915" y="458.70535714285711"/>
+            <point key="canvasLocation" x="1766" y="147"/>
+        </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="Xrk-a4-7pB">
+            <objects>
+                <viewController id="cSn-fX-aYV" userLabel="Stats View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9sF-gD-TeC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mXM-mh-0Fx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cwJ-OS-SHv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0z-0l-ZrT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708" y="883.74384236453204"/>
+        </scene>
+        <!--Alarm View Controller-->
+        <scene sceneID="rAk-Vb-7y4">
+            <objects>
+                <viewController id="pfh-ax-TqE" userLabel="Alarm View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tnq-wM-Vu3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="S3D-4m-Onc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Alarm" image="bell.fill" catalog="system" id="g3S-BH-CZ1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIw-dY-Q5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1763" y="1657"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="QwH-JS-qip">
@@ -215,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wd-gC-tVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2823" y="-273"/>
+            <point key="canvasLocation" x="2577" y="-576"/>
         </scene>
         <!--Kanji Detail View Controller-->
         <scene sceneID="ObD-YA-PGL">
@@ -350,13 +382,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGA-Qw-7DU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3666.666666666667" y="-273.21428571428572"/>
+            <point key="canvasLocation" x="3390" y="-576"/>
         </scene>
         <!--Kanji List-->
         <scene sceneID="eBh-Kv-GHl">
             <objects>
                 <navigationController id="tgh-Zh-Hpk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kanji List" image="chart.bar.doc.horizontal.fill" catalog="system" selectedImage="chart.bar.doc.horizontal.fill" id="Bd1-Rc-I0v"/>
+                    <tabBarItem key="tabBarItem" title="Kanji List" image="character.zh" catalog="system" selectedImage="character.zh" id="Bd1-Rc-I0v"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hzP-1D-lH9">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -367,7 +399,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwT-na-AjO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1962" y="-272"/>
+            <point key="canvasLocation" x="1767" y="-576"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x5m-Do-zle">
@@ -381,11 +413,13 @@
                     <connections>
                         <segue destination="tgh-Zh-Hpk" kind="relationship" relationship="viewControllers" id="aHo-w5-e10"/>
                         <segue destination="T3d-dw-BBb" kind="relationship" relationship="viewControllers" id="aCt-SP-TNh"/>
+                        <segue destination="vvx-cD-Se8" kind="relationship" relationship="viewControllers" id="fbJ-Wf-aXV"/>
+                        <segue destination="pfh-ax-TqE" kind="relationship" relationship="viewControllers" id="ddY-8m-0Fy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqp-1k-PEX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="-41"/>
+            <point key="canvasLocation" x="-94" y="1093"/>
         </scene>
         <!--Quizz Card View Controller-->
         <scene sceneID="8A2-kS-D3f">
@@ -400,11 +434,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGH-Oi-quT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="459"/>
+            <point key="canvasLocation" x="2577" y="147"/>
+        </scene>
+        <!--Stats-->
+        <scene sceneID="JDS-MV-VbQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vvx-cD-Se8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Stats" image="chart.bar.xaxis" catalog="system" id="Qgu-du-0vf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AMD-5z-vJo">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cSn-fX-aYV" kind="relationship" relationship="rootViewController" id="hLW-NO-VMK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qO4-2g-WIL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765.5999999999999" y="883.74384236453204"/>
         </scene>
     </scenes>
     <resources>
-        <image name="chart.bar.doc.horizontal.fill" catalog="system" width="115" height="128"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="character.zh" catalog="system" width="128" height="123"/>
+        <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
         <image name="questionmark" catalog="system" width="96" height="128"/>
         <image name="switch.2" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">

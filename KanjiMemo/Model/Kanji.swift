@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import CoreData
 
-struct Kanji: Decodable, Equatable {
+public class Kanji: NSObject, Decodable {
     // Parameters from json
     var kanji: String!
     var grade: Int!

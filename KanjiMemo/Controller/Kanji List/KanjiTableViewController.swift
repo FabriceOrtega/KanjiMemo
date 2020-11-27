@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import CoreData
 
 class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     
     // Outlet of the table view
     @IBOutlet weak var kanjiTableView: UITableView!
@@ -24,9 +24,6 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-    
-    // List of kanji which switch is on
-    var listActivatedKAnji: [Kanji] = []
     
     // To pass data to the detailled view
     var kanjiDetailData: Kanji!
@@ -45,6 +42,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
+    // Search is filetring
     var isFiltering: Bool {
         return searchController.isActive && !isSearchBarEmpty
     }
@@ -53,11 +51,13 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     var displaySelectedKanji = false
     
     // Parameter used to attribute filteredKanji array or listActivatedKAnji
-    var kanjiUpdatedList: Kanji!
+    var kanjiFromThisCell: Kanji!
     
     //MARK: View did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Kanji"
         
         // Call the decode methed
         decoder.decodeKanjiJson{[weak self] result in
@@ -84,6 +84,27 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         definesPresentationContext = true
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        if #available(iOS 13.0, *) {
+//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+//              return
+//            }
+//
+//            let managedContext = appDelegate.persistentContainer.viewContext
+//            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ListKanjiOn")
+//
+//            do {
+//              CardCreator.cardCreator.listActivatedKAnji = try managedContext.fetch(fetchRequest)
+//            } catch let error as NSError {
+//              print("Could not fetch. \(error), \(error.userInfo)")
+//            }
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//    }
+//    
+
+    
     // MARK: Filtering method
     func filterContentForSearchText(_ searchText: String,
                                     category: Kanji? = nil) {
@@ -104,7 +125,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // Button to show only selected Kanji
     @IBAction func displayOnlySelectedKanji(_ sender: Any) {
         // If no kanji selected
-        if listActivatedKAnji == [] {
+        if CardCreator.cardCreator.listActivatedKAnji == [] {
             numberOfKanji.text = "No Kanji selected"
         }
         
@@ -127,7 +148,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             return filteredKanji.count
         } else if displaySelectedKanji {
             // Else if button "display selected kanji" is active
-            return listActivatedKAnji.count
+            return CardCreator.cardCreator.listActivatedKAnji.count
         }
         
         // If no filter
@@ -142,17 +163,17 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let kanjiNumberText = " Kanji displayed"
         
         if isFiltering {
-            kanjiUpdatedList = filteredKanji[row]
+            kanjiFromThisCell = filteredKanji[row]
             // Number of kanji displayed
             numberOfKanji.text = String(filteredKanji.count) + kanjiNumberText
             
         } else if displaySelectedKanji {
-            kanjiUpdatedList = listActivatedKAnji[row]
+            kanjiFromThisCell = CardCreator.cardCreator.listActivatedKAnji[row]
             // Number of kanji displayed
-            numberOfKanji.text = String(listActivatedKAnji.count) + kanjiNumberText
+            numberOfKanji.text = String(CardCreator.cardCreator.listActivatedKAnji.count) + kanjiNumberText
             
         } else {
-            kanjiUpdatedList = listKanji[row]
+            kanjiFromThisCell = listKanji[row]
             // Number of kanji displayed
             numberOfKanji.text = String(listKanji.count) + kanjiNumberText
         }
@@ -166,20 +187,20 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         // Compare list of activated kanji with actual kanji to activate switch for reusable cell
-        if listActivatedKAnji.contains(kanjiUpdatedList) {
+        if CardCreator.cardCreator.listActivatedKAnji.contains(kanjiFromThisCell) {
             cell?.kanjiSwitch.isOn = true
         }
         
         
         // Attribute Kanji
-        cell?.kanjiLabel.text = kanjiUpdatedList.kanji
+        cell?.kanjiLabel.text = kanjiFromThisCell.kanji
         
         // Attribute the english translation
-        let meaningsString = kanjiUpdatedList.meanings.joined(separator:", ")
+        let meaningsString = kanjiFromThisCell.meanings.joined(separator:", ")
         cell?.englishLabel.text = meaningsString
         
         // Attribute the pronouciation in hiragana/katakana
-        let kanaString = kanjiUpdatedList.kun_readings.joined(separator:", ")
+        let kanaString = kanjiFromThisCell.kun_readings.joined(separator:", ")
         cell?.kanaLabel.text = kanaString
         
         // Switch
@@ -190,7 +211,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    // Switch method
+    //MARK: Switch method
     @objc func switchChanged(_ sender : UISwitch!){
         
         // Call method to take kanji from filetred list if filter is active
@@ -198,23 +219,47 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // Check status of switch
         if sender .isOn {
-            //Append listActivatedKAnji and in CardCreator list
-            listActivatedKAnji.append(kanjiUpdatedList)
-            CardCreator.cardCreator.listActivatedKAnji.append(kanjiUpdatedList)
+            //Append listActivatedKAnji
+            CardCreator.cardCreator.listActivatedKAnji.append(kanjiFromThisCell)
             //print(listActivatedKAnji)
             
         } else {
-            //Remove from listActivatedKAnji and from CardCreator list
-            if let index = listActivatedKAnji.firstIndex(of: kanjiUpdatedList) {
-                listActivatedKAnji.remove(at: index)
-            }
-            if let index = CardCreator.cardCreator.listActivatedKAnji.firstIndex(of: kanjiUpdatedList) {
+            //Remove from listActivatedKAnji
+            if let index = CardCreator.cardCreator.listActivatedKAnji.firstIndex(of: kanjiFromThisCell) {
                 CardCreator.cardCreator.listActivatedKAnji.remove(at: index)
             }
             //print(listActivatedKAnji)
             kanjiTableView.reloadData()
             
         }
+        
+        //Save the list with CoreData
+        if #available(iOS 13.0, *) {
+            self.save(list: CardCreator.cardCreator.listActivatedKAnji)
+        } else {
+            // Fallback on earlier versions
+        }
+    
+    }
+    
+    // Save method
+    @available(iOS 13.0, *)
+    func save(list: [Kanji]) {
+      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+        return
+      }
+
+      let managedContext = appDelegate.persistentContainer.viewContext
+      let entity = NSEntityDescription.entity(forEntityName: "ListKanjiOn", in: managedContext)!
+      let list = NSManagedObject(entity: entity, insertInto: managedContext)
+      list.setValue(list, forKeyPath: "actifKanji")
+
+      do {
+        try managedContext.save()
+        print("saved")
+      } catch let error as NSError {
+        print("Could not save. \(error), \(error.userInfo)")
+      }
     }
     
     
@@ -225,7 +270,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         attributeKanjiFromCorrectList(row: indexPath.row)
         
         // attribute the data
-        let detailledKanji = kanjiUpdatedList
+        let detailledKanji = kanjiFromThisCell
         
         kanjiDetailData = detailledKanji
         

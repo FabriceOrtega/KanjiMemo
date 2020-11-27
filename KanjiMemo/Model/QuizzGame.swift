@@ -96,5 +96,18 @@ public class QuizzGame {
         }
         print(randomPositionArray)
     }
+    
+    // Method to check is correct translation is chosen
+    func checkIfCorrectTranslation(index: Int, position: Int){
+        if randomPositionArray[index] == position {
+            print("Correct")
+            score += 1
+            Stats.stats.countKanji(index: index)
+            Stats.stats.countCorrectAnswer(index: index)
+        } else {
+            print("Wrong!!")
+            Stats.stats.countKanji(index: index)
+        }
+    }
    
 }
