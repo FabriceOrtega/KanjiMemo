@@ -97,10 +97,4 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
         }
     }
     
-    // Method to call an alert
-    func alert(title: String, message: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        return self.present(alertVC, animated: true, completion: nil)
-    }
 }

@@ -28,9 +28,7 @@ public class CardCreator {
     var cardImages: [UIImage?] = []
     
     // Public init for pattern singleton
-    public init() {
-        
-    }
+    public init() {}
     
     //Method to create cards as UIImageView
     func imageWith(kanji: String?) -> UIImage? {

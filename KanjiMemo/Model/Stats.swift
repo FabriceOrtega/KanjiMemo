@@ -47,9 +47,7 @@ public class Stats{
     }
     
     // Public init for pattern singleton
-    public init() {
-        
-    }
+    public init() {}
     
     // Method the count of how many times the kanji was in the quizz
     func countKanji(index: Int){

@@ -55,15 +55,18 @@ class QuizzViewController: UIViewController {
 
     // Start quizz button
     @IBAction func startQuizz(_ sender: Any) {
-        
+        // User must select at least two cards to start the quizz
         if CardCreator.cardCreator.listActivatedKAnji.count > 1 {
+            // Quizz starts
+            QuizzGame.quizzGame.quizzIsOn = true
+            
             // Create kanji cards
             CardCreator.cardCreator.createKanjiImages()
             
             // Generate the array of correct translation, wrong translation and position
             QuizzGame.quizzGame.generateArrays()
             // Set up the first one
-            setUpTestText(index: 0)
+            setUpText(index: 0)
             
             // Reinitialize the score
             QuizzGame.quizzGame.score = 0
@@ -74,12 +77,12 @@ class QuizzViewController: UIViewController {
             self.quizzCardVC.viewDidLoad()
             
         } else {
-            alert(title: "Error", message: "Please select at least two Kanji to start the quizz")
+            alert(title: "Error", message: "Please select at least two Kanji to start the quizz !")
         }
     }
     
     
-    func setUpTestText(index: Int){
+    func setUpText(index: Int){
         
         if index < CardCreator.cardCreator.listActivatedKAnji.count{
             if QuizzGame.quizzGame.randomPositionArray[index] == 1 {
@@ -92,13 +95,15 @@ class QuizzViewController: UIViewController {
         } else {
             leftText.text = ""
             rightText.text = ""
+            // Game is over
+            QuizzGame.quizzGame.quizzIsOn = false
         }
     }
     
     // Method executed when the card swiped to the left
     @objc func cardDidSwipeLeft(notification:Notification) {
         // Set next card
-        setUpTestText(index: (notification.userInfo!["index"] as! Int)+1)
+        setUpText(index: (notification.userInfo!["index"] as! Int)+1)
         
         // Call the quizz game method for left position (position 1)
         QuizzGame.quizzGame.checkIfCorrectTranslation(index: (notification.userInfo!["index"] as! Int), position: 1)
@@ -113,7 +118,7 @@ class QuizzViewController: UIViewController {
     // Method executed when the card swiped to the right
     @objc func cardDidSwipeRight(notification:Notification) {
         // Set next card
-        setUpTestText(index: (notification.userInfo!["index"] as! Int)+1)
+        setUpText(index: (notification.userInfo!["index"] as! Int)+1)
         
         // Call the quizz game method  for left position (position 2)
         QuizzGame.quizzGame.checkIfCorrectTranslation(index: (notification.userInfo!["index"] as! Int), position: 2)

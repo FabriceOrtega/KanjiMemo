@@ -18,6 +18,9 @@
 		1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */; };
 		1C61A00C256FF412000185BA /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61A00B256FF412000185BA /* Stats.swift */; };
 		1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C793D782566DFF2003980F5 /* QuizzGame.swift */; };
+		1C8116A72570F28B00C2004B /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116A62570F28B00C2004B /* StatsViewController.swift */; };
+		1C8116AA2570F8D100C2004B /* StatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116A92570F8D100C2004B /* StatsTableViewController.swift */; };
+		1C8116AD2570F8E700C2004B /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */; };
 		1C933655256118C200A6AE1C /* KanjiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C933654256118C200A6AE1C /* KanjiTableViewController.swift */; };
 		1C93365925611C7E00A6AE1C /* KanjiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93365825611C7E00A6AE1C /* KanjiTableViewCell.swift */; };
 		1C940BF7256665120040FBB8 /* QuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BF6256665120040FBB8 /* QuizzViewController.swift */; };
@@ -41,6 +44,9 @@
 		1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiJsonDecoder.swift; sourceTree = "<group>"; };
 		1C61A00B256FF412000185BA /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		1C793D782566DFF2003980F5 /* QuizzGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzGame.swift; sourceTree = "<group>"; };
+		1C8116A62570F28B00C2004B /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		1C8116A92570F8D100C2004B /* StatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewController.swift; sourceTree = "<group>"; };
+		1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		1C933654256118C200A6AE1C /* KanjiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiTableViewController.swift; sourceTree = "<group>"; };
 		1C93365825611C7E00A6AE1C /* KanjiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiTableViewCell.swift; sourceTree = "<group>"; };
 		1C940BF6256665120040FBB8 /* QuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +107,6 @@
 				1C369E03256076C400BA1A7D /* Assets.xcassets */,
 				1C369DFC256076C300BA1A7D /* SceneDelegate.swift */,
 				1C369DFA256076C300BA1A7D /* AppDelegate.swift */,
-				1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 		1C369E11256076D600BA1A7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */,
 				1C369E182560779100BA1A7D /* Kanji.json */,
 				1C369E1C256078B600BA1A7D /* Kanji.swift */,
 				1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */,
@@ -160,6 +166,9 @@
 		1C9E541A256FAC37006DC883 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				1C8116A62570F28B00C2004B /* StatsViewController.swift */,
+				1C8116A92570F8D100C2004B /* StatsTableViewController.swift */,
+				1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -307,6 +316,9 @@
 				1C61A00C256FF412000185BA /* Stats.swift in Sources */,
 				1C933655256118C200A6AE1C /* KanjiTableViewController.swift in Sources */,
 				1C369DFB256076C300BA1A7D /* AppDelegate.swift in Sources */,
+				1C8116AA2570F8D100C2004B /* StatsTableViewController.swift in Sources */,
+				1C8116AD2570F8E700C2004B /* StatsTableViewCell.swift in Sources */,
+				1C8116A72570F28B00C2004B /* StatsViewController.swift in Sources */,
 				1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */,
 				1C93365925611C7E00A6AE1C /* KanjiTableViewCell.swift in Sources */,
 				1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */,

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 
 class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -83,26 +82,6 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         definesPresentationContext = true
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        if #available(iOS 13.0, *) {
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//              return
-//            }
-//
-//            let managedContext = appDelegate.persistentContainer.viewContext
-//            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ListKanjiOn")
-//
-//            do {
-//              CardCreator.cardCreator.listActivatedKAnji = try managedContext.fetch(fetchRequest)
-//            } catch let error as NSError {
-//              print("Could not fetch. \(error), \(error.userInfo)")
-//            }
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//    }
-//    
 
     
     // MARK: Filtering method
@@ -185,12 +164,10 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         // Call method to take kani from filetred list if filter is active
         attributeKanjiFromCorrectList(row: indexPath.row)
         
-        
         // Compare list of activated kanji with actual kanji to activate switch for reusable cell
         if CardCreator.cardCreator.listActivatedKAnji.contains(kanjiFromThisCell) {
             cell?.kanjiSwitch.isOn = true
         }
-        
         
         // Attribute Kanji
         cell?.kanjiLabel.text = kanjiFromThisCell.kanji
@@ -217,51 +194,34 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         // Call method to take kanji from filetred list if filter is active
         attributeKanjiFromCorrectList(row: sender.tag)
         
-        // Check status of switch
-        if sender .isOn {
-            //Append listActivatedKAnji
-            CardCreator.cardCreator.listActivatedKAnji.append(kanjiFromThisCell)
-            //print(listActivatedKAnji)
-            
-        } else {
-            //Remove from listActivatedKAnji
-            if let index = CardCreator.cardCreator.listActivatedKAnji.firstIndex(of: kanjiFromThisCell) {
-                CardCreator.cardCreator.listActivatedKAnji.remove(at: index)
+        // Check status of th quizz
+        if QuizzGame.quizzGame.quizzIsOn == false {
+            // Check status of switch
+            if sender .isOn {
+                //Append listActivatedKAnji
+                CardCreator.cardCreator.listActivatedKAnji.append(kanjiFromThisCell)
+                //print(listActivatedKAnji)
+
+            } else {
+                //Remove from listActivatedKAnji
+                if let index = CardCreator.cardCreator.listActivatedKAnji.firstIndex(of: kanjiFromThisCell) {
+                    CardCreator.cardCreator.listActivatedKAnji.remove(at: index)
+                }
+                //print(listActivatedKAnji)
+                kanjiTableView.reloadData()
             }
-            //print(listActivatedKAnji)
-            kanjiTableView.reloadData()
-            
+        } else {
+            // If the quizz is on, don't allow to change the kanji selection
+            alert(title: "Error", message: "Please finish the quizz before changing the Kanji selection.")
+            // Keep the switch in their position
+            if sender.isOn {
+                sender.setOn(false, animated: true)
+            } else {
+                sender.setOn(true, animated: true)
+            }
         }
         
-        //Save the list with CoreData
-        if #available(iOS 13.0, *) {
-            self.save(list: CardCreator.cardCreator.listActivatedKAnji)
-        } else {
-            // Fallback on earlier versions
-        }
-    
     }
-    
-    // Save method
-    @available(iOS 13.0, *)
-    func save(list: [Kanji]) {
-      guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-        return
-      }
-
-      let managedContext = appDelegate.persistentContainer.viewContext
-      let entity = NSEntityDescription.entity(forEntityName: "ListKanjiOn", in: managedContext)!
-      let list = NSManagedObject(entity: entity, insertInto: managedContext)
-      list.setValue(list, forKeyPath: "actifKanji")
-
-      do {
-        try managedContext.save()
-        print("saved")
-      } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-      }
-    }
-    
     
     
     // MARK: TableView delegate
@@ -284,6 +244,13 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             let detailVC = segue.destination as! KanjiDetailViewController
             detailVC.kanjiDetailData = kanjiDetailData
         }
+    }
+    
+    // Method to call an alert
+    func alert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        return self.present(alertVC, animated: true, completion: nil)
     }
 }
 

@@ -39,10 +39,11 @@ public class QuizzGame {
     // Score
     var score = 0
     
+    // Boolean to check if quizz is currenlty on going
+    var quizzIsOn = false
+    
     // Public init for pattern singleton
-    public init() {
-        
-    }
+    public init() {}
     
     // Generate all arrays
     func generateArrays(){
