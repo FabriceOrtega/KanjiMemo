@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -20,6 +21,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         didSet {
             DispatchQueue.main.async {
                 self.kanjiTableView.reloadData()
+                self.fillKanjiActivatedList()
             }
         }
     }
@@ -78,7 +80,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
-            // Fallback on earlier versions
+            kanjiTableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
     }
@@ -200,14 +202,17 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             if sender .isOn {
                 //Append listActivatedKAnji
                 CardCreator.cardCreator.listActivatedKAnji.append(kanjiFromThisCell)
-                //print(listActivatedKAnji)
+                // Save Kanji in database
+                KanjiSaveManagement.kanjiSaveManagement.saveKanji(kanjiName: kanjiFromThisCell.kanji)
 
             } else {
                 //Remove from listActivatedKAnji
                 if let index = CardCreator.cardCreator.listActivatedKAnji.firstIndex(of: kanjiFromThisCell) {
                     CardCreator.cardCreator.listActivatedKAnji.remove(at: index)
                 }
-                //print(listActivatedKAnji)
+                // Remove from database
+                KanjiSaveManagement.kanjiSaveManagement.removeKanji(kanjiName: kanjiFromThisCell.kanji)
+                
                 kanjiTableView.reloadData()
             }
         } else {
@@ -237,6 +242,21 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         performSegue(withIdentifier: "toKanjiDetail", sender: nil)
     }
     
+    // MARK: Database Methods
+    
+    // Method to charge data from database
+    private func fillKanjiActivatedList() {
+        
+        for i in KanjiEntity.all {
+            
+            // Search in list Kanji the kanji object with the kanji
+            if let kanjiToAppendIndex = listKanji.firstIndex(where: { $0.kanji == i.kanji }) {
+                
+                // Append list of activated kanji
+                CardCreator.cardCreator.listActivatedKAnji.append(listKanji[kanjiToAppendIndex])
+            }
+        }
+    }
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

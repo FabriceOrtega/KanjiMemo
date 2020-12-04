@@ -53,16 +53,15 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
         
         // Attribute colors to cards when swipped
         let leftOverlay = UIView()
-        leftOverlay.backgroundColor = .purple
+        leftOverlay.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         
         let rightOverlay = UIView()
-        rightOverlay.backgroundColor = .blue
+        rightOverlay.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         
         card.setOverlays([.left: leftOverlay, .right: rightOverlay])
         
         return card
     }
-    
     
     // Stack creation method
     func cardStack(_ cardStack: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
@@ -71,12 +70,7 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     
     // Stack count method
     func numberOfCards(in cardStack: SwipeCardStack) -> Int {
-        // Limit quizz to 25 Kanji
-        if cardImages.count > QuizzGame.quizzGame.maxCardQuizz {
-            return QuizzGame.quizzGame.maxCardQuizz
-        } else {
-            return cardImages.count
-        }
+        return cardImages.count
     }
     
     // Calling the build method from activated kanji list

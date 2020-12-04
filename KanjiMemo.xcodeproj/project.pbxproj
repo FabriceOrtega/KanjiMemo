@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C08BD57257929800024E400 /* CardCreatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08BD56257929800024E400 /* CardCreatorTestCase.swift */; };
+		1C08BD5B257933A50024E400 /* QuizzGameTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08BD5A257933A50024E400 /* QuizzGameTestCase.swift */; };
+		1C10FE0E2578ED7F004C8481 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10FE0D2578ED7F004C8481 /* FakeResponseData.swift */; };
+		1C10FE122578EF24004C8481 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10FE112578EF24004C8481 /* URLSessionFake.swift */; };
+		1C10FE162578EF86004C8481 /* KanjiJsonDecoderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10FE152578EF86004C8481 /* KanjiJsonDecoderTestCase.swift */; };
+		1C10FE1A2578F908004C8481 /* KanjiTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C10FE192578F908004C8481 /* KanjiTest.json */; };
 		1C1868BC2561627300A09B82 /* KanjiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1868BB2561627300A09B82 /* KanjiDetailViewController.swift */; };
 		1C369DFB256076C300BA1A7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369DFA256076C300BA1A7D /* AppDelegate.swift */; };
 		1C369DFD256076C300BA1A7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369DFC256076C300BA1A7D /* SceneDelegate.swift */; };
@@ -18,19 +24,41 @@
 		1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */; };
 		1C61A00C256FF412000185BA /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61A00B256FF412000185BA /* Stats.swift */; };
 		1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C793D782566DFF2003980F5 /* QuizzGame.swift */; };
+		1C7BA2EF2573A19100EB3612 /* StatsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */; };
 		1C8116A72570F28B00C2004B /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116A62570F28B00C2004B /* StatsViewController.swift */; };
 		1C8116AA2570F8D100C2004B /* StatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116A92570F8D100C2004B /* StatsTableViewController.swift */; };
 		1C8116AD2570F8E700C2004B /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */; };
+		1C8C0E252574079200F1C8C4 /* KanjiSaveManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8C0E242574079200F1C8C4 /* KanjiSaveManagement.swift */; };
 		1C933655256118C200A6AE1C /* KanjiTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C933654256118C200A6AE1C /* KanjiTableViewController.swift */; };
 		1C93365925611C7E00A6AE1C /* KanjiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93365825611C7E00A6AE1C /* KanjiTableViewCell.swift */; };
 		1C940BF7256665120040FBB8 /* QuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BF6256665120040FBB8 /* QuizzViewController.swift */; };
 		1C940BFD25666AC80040FBB8 /* QuizzCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */; };
 		1C940C07256673520040FBB8 /* CardCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940C06256673520040FBB8 /* CardCreator.swift */; };
 		1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */; };
+		1CBE109525727E260070E329 /* KanjiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE109425727E260070E329 /* KanjiEntity.swift */; };
+		1CF2E1F0257941C100001F55 /* StatsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF2E1EF257941C100001F55 /* StatsTestCase.swift */; };
 		217F61EB6D4DF70920041883 /* Pods_KanjiMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE60BBF541E8054010C4C6EC /* Pods_KanjiMemo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1C10FE042578EC8B004C8481 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C369DEF256076C300BA1A7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1C369DF6256076C300BA1A7D;
+			remoteInfo = KanjiMemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1C08BD56257929800024E400 /* CardCreatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreatorTestCase.swift; sourceTree = "<group>"; };
+		1C08BD5A257933A50024E400 /* QuizzGameTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzGameTestCase.swift; sourceTree = "<group>"; };
+		1C10FDFF2578EC8B004C8481 /* KanjiMemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanjiMemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C10FE032578EC8B004C8481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C10FE0D2578ED7F004C8481 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
+		1C10FE112578EF24004C8481 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
+		1C10FE152578EF86004C8481 /* KanjiJsonDecoderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiJsonDecoderTestCase.swift; sourceTree = "<group>"; };
+		1C10FE192578F908004C8481 /* KanjiTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = KanjiTest.json; sourceTree = "<group>"; };
 		1C1868BB2561627300A09B82 /* KanjiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiDetailViewController.swift; sourceTree = "<group>"; };
 		1C369DF7256076C300BA1A7D /* KanjiMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanjiMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C369DFA256076C300BA1A7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,21 +72,32 @@
 		1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiJsonDecoder.swift; sourceTree = "<group>"; };
 		1C61A00B256FF412000185BA /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		1C793D782566DFF2003980F5 /* QuizzGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzGame.swift; sourceTree = "<group>"; };
+		1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsEntity.swift; sourceTree = "<group>"; };
 		1C8116A62570F28B00C2004B /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		1C8116A92570F8D100C2004B /* StatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewController.swift; sourceTree = "<group>"; };
 		1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		1C8C0E242574079200F1C8C4 /* KanjiSaveManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiSaveManagement.swift; sourceTree = "<group>"; };
 		1C933654256118C200A6AE1C /* KanjiTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiTableViewController.swift; sourceTree = "<group>"; };
 		1C93365825611C7E00A6AE1C /* KanjiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiTableViewCell.swift; sourceTree = "<group>"; };
 		1C940BF6256665120040FBB8 /* QuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewController.swift; sourceTree = "<group>"; };
 		1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCardViewController.swift; sourceTree = "<group>"; };
 		1C940C06256673520040FBB8 /* CardCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreator.swift; sourceTree = "<group>"; };
 		1CA9D66B256BF729003F0BBE /* KanjiMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiMemo.xcdatamodel; sourceTree = "<group>"; };
+		1CBE109425727E260070E329 /* KanjiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiEntity.swift; sourceTree = "<group>"; };
+		1CF2E1EF257941C100001F55 /* StatsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTestCase.swift; sourceTree = "<group>"; };
 		9A7FD7AAFC40D3FEEB6C19DC /* Pods-KanjiMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanjiMemo.debug.xcconfig"; path = "Target Support Files/Pods-KanjiMemo/Pods-KanjiMemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B792940683BD8C1A6CE8F906 /* Pods-KanjiMemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanjiMemo.release.xcconfig"; path = "Target Support Files/Pods-KanjiMemo/Pods-KanjiMemo.release.xcconfig"; sourceTree = "<group>"; };
 		BE60BBF541E8054010C4C6EC /* Pods_KanjiMemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KanjiMemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C10FDFC2578EC8B004C8481 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1C369DF4256076C300BA1A7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,10 +109,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C10FE002578EC8B004C8481 /* KanjiMemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C10FE032578EC8B004C8481 /* Info.plist */,
+				1C10FE0D2578ED7F004C8481 /* FakeResponseData.swift */,
+				1C10FE112578EF24004C8481 /* URLSessionFake.swift */,
+				1C10FE192578F908004C8481 /* KanjiTest.json */,
+				1C10FE152578EF86004C8481 /* KanjiJsonDecoderTestCase.swift */,
+				1C08BD56257929800024E400 /* CardCreatorTestCase.swift */,
+				1C08BD5A257933A50024E400 /* QuizzGameTestCase.swift */,
+				1CF2E1EF257941C100001F55 /* StatsTestCase.swift */,
+			);
+			path = KanjiMemoTests;
+			sourceTree = "<group>";
+		};
 		1C369DEE256076C300BA1A7D = {
 			isa = PBXGroup;
 			children = (
 				1C369DF9256076C300BA1A7D /* KanjiMemo */,
+				1C10FE002578EC8B004C8481 /* KanjiMemoTests */,
 				1C369DF8256076C300BA1A7D /* Products */,
 				8D726040A92207986578E82B /* Pods */,
 				205785B1103C021BE807213F /* Frameworks */,
@@ -84,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				1C369DF7256076C300BA1A7D /* KanjiMemo.app */,
+				1C10FDFF2578EC8B004C8481 /* KanjiMemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +170,7 @@
 		1C369E11256076D600BA1A7D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */,
+				1C7BA2EC2573A0EB00EB3612 /* CoreData */,
 				1C369E182560779100BA1A7D /* Kanji.json */,
 				1C369E1C256078B600BA1A7D /* Kanji.swift */,
 				1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */,
@@ -142,6 +198,17 @@
 				1C940C0925668FBD0040FBB8 /* Kanji List */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		1C7BA2EC2573A0EB00EB3612 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */,
+				1CBE109425727E260070E329 /* KanjiEntity.swift */,
+				1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */,
+				1C8C0E242574079200F1C8C4 /* KanjiSaveManagement.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1C940C0925668FBD0040FBB8 /* Kanji List */ = {
@@ -200,6 +267,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1C10FDFE2578EC8B004C8481 /* KanjiMemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C10FE082578EC8B004C8481 /* Build configuration list for PBXNativeTarget "KanjiMemoTests" */;
+			buildPhases = (
+				1C10FDFB2578EC8B004C8481 /* Sources */,
+				1C10FDFC2578EC8B004C8481 /* Frameworks */,
+				1C10FDFD2578EC8B004C8481 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C10FE052578EC8B004C8481 /* PBXTargetDependency */,
+			);
+			name = KanjiMemoTests;
+			productName = KanjiMemoTests;
+			productReference = 1C10FDFF2578EC8B004C8481 /* KanjiMemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1C369DF6256076C300BA1A7D /* KanjiMemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1C369E0B256076C400BA1A7D /* Build configuration list for PBXNativeTarget "KanjiMemo" */;
@@ -228,6 +313,11 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					1C10FDFE2578EC8B004C8481 = {
+						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
+						TestTargetID = 1C369DF6256076C300BA1A7D;
+					};
 					1C369DF6256076C300BA1A7D = {
 						CreatedOnToolsVersion = 12.2;
 					};
@@ -247,11 +337,20 @@
 			projectRoot = "";
 			targets = (
 				1C369DF6256076C300BA1A7D /* KanjiMemo */,
+				1C10FDFE2578EC8B004C8481 /* KanjiMemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C10FDFD2578EC8B004C8481 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C10FE1A2578F908004C8481 /* KanjiTest.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1C369DF5256076C300BA1A7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +407,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1C10FDFB2578EC8B004C8481 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C10FE162578EF86004C8481 /* KanjiJsonDecoderTestCase.swift in Sources */,
+				1C10FE0E2578ED7F004C8481 /* FakeResponseData.swift in Sources */,
+				1C08BD5B257933A50024E400 /* QuizzGameTestCase.swift in Sources */,
+				1CF2E1F0257941C100001F55 /* StatsTestCase.swift in Sources */,
+				1C08BD57257929800024E400 /* CardCreatorTestCase.swift in Sources */,
+				1C10FE122578EF24004C8481 /* URLSessionFake.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1C369DF3256076C300BA1A7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,9 +434,12 @@
 				1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */,
 				1C93365925611C7E00A6AE1C /* KanjiTableViewCell.swift in Sources */,
 				1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */,
+				1C8C0E252574079200F1C8C4 /* KanjiSaveManagement.swift in Sources */,
 				1C940BFD25666AC80040FBB8 /* QuizzCardViewController.swift in Sources */,
 				1C1868BC2561627300A09B82 /* KanjiDetailViewController.swift in Sources */,
+				1C7BA2EF2573A19100EB3612 /* StatsEntity.swift in Sources */,
 				1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */,
+				1CBE109525727E260070E329 /* KanjiEntity.swift in Sources */,
 				1C369DFD256076C300BA1A7D /* SceneDelegate.swift in Sources */,
 				1C940BF7256665120040FBB8 /* QuizzViewController.swift in Sources */,
 				1C369E1D256078B600BA1A7D /* Kanji.swift in Sources */,
@@ -332,6 +447,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C10FE052578EC8B004C8481 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1C369DF6256076C300BA1A7D /* KanjiMemo */;
+			targetProxy = 1C10FE042578EC8B004C8481 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1C369E00256076C300BA1A7D /* Main.storyboard */ = {
@@ -353,6 +476,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1C10FE062578EC8B004C8481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QSZM3JVR24;
+				INFOPLIST_FILE = KanjiMemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabriceortega.KanjiMemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KanjiMemo.app/KanjiMemo";
+			};
+			name = Debug;
+		};
+		1C10FE072578EC8B004C8481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QSZM3JVR24;
+				INFOPLIST_FILE = KanjiMemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabriceortega.KanjiMemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KanjiMemo.app/KanjiMemo";
+			};
+			name = Release;
+		};
 		1C369E09256076C400BA1A7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -514,6 +680,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1C10FE082578EC8B004C8481 /* Build configuration list for PBXNativeTarget "KanjiMemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C10FE062578EC8B004C8481 /* Debug */,
+				1C10FE072578EC8B004C8481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1C369DF2256076C300BA1A7D /* Build configuration list for PBXProject "KanjiMemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

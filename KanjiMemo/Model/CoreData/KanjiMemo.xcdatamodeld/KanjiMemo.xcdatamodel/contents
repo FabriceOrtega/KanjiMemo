@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="KanjiEntity" representedClassName=".KanjiEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="grade" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="heisig_en" optional="YES" attributeType="String"/>
+        <attribute name="jlpt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kanji" optional="YES" attributeType="String"/>
+        <attribute name="kun_readings" optional="YES" attributeType="String"/>
+        <attribute name="meanings" optional="YES" attributeType="String"/>
+        <attribute name="name_readings" optional="YES" attributeType="String"/>
+        <attribute name="on_readings" optional="YES" attributeType="String"/>
+        <attribute name="stroke_count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="unicode" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="StatsEntity" representedClassName=".StatsEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="appearance" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="correct" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kanji" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="KanjiEntity" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="StatsEntity" positionX="-63" positionY="54" width="128" height="74"/>
+    </elements>
+</model>

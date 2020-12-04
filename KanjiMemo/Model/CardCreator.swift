@@ -31,12 +31,12 @@ public class CardCreator {
     public init() {}
     
     //Method to create cards as UIImageView
-    func imageWith(kanji: String?) -> UIImage? {
+    private func imageWith(kanji: String?) -> UIImage? {
         let frame = CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight)
         let kanjiLabel = UILabel(frame: frame)
         kanjiLabel.textAlignment = .center
-        kanjiLabel.backgroundColor = .lightGray
-        kanjiLabel.textColor = .white
+        kanjiLabel.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        kanjiLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         kanjiLabel.font = UIFont.boldSystemFont(ofSize: 200)
         kanjiLabel.text = kanji
         kanjiLabel.clipsToBounds = true
@@ -62,11 +62,16 @@ public class CardCreator {
         
         // At least two kanji must be selected
         if listActivatedKAnji.count > 1 {
-//            print(listActivatedKAnji.count)
             
-            // Loop in the array, and create a UIImage per kanji and it to the list
-            for i in 0...((listActivatedKAnji.count) - 1){
-                cardImages.append(imageWith(kanji: listActivatedKAnji[i].kanji))
+            // Loop in the array, and create a UIImage per kanji and it to the list with the max card limit
+            if listActivatedKAnji.count > QuizzGame.quizzGame.maxCardQuizz {
+                for i in 0...((QuizzGame.quizzGame.maxCardQuizz) - 1){
+                    cardImages.append(imageWith(kanji: listActivatedKAnji[i].kanji))
+                }
+            } else {
+                for i in 0...((listActivatedKAnji.count) - 1){
+                    cardImages.append(imageWith(kanji: listActivatedKAnji[i].kanji))
+                }
             }
         }
     }

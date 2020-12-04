@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 public class Stats{
     
@@ -56,14 +57,15 @@ public class Stats{
             if countKanjiQuizz[CardCreator.cardCreator.listActivatedKAnji[index].kanji] == nil {
                 // If not add it, with 1 as value
                 countKanjiQuizz[CardCreator.cardCreator.listActivatedKAnji[index].kanji] = 1
+                // Create entity
+                saveAppearanceCounting(index: index)
             } else {
                 // If yes, add +1 to the value
                 countKanjiQuizz[CardCreator.cardCreator.listActivatedKAnji[index].kanji]! += 1
+                // Save entity with +1 as appearance
+                saveAppearanceCounting(index: index)
             }
         }
-//        print(countKanjiQuizz)
-//        print("Kanji in quizz : \(numberOfKanjiFromQuizz)")
-//        print("Total card swipped : \(numberTotalCardSwipped)")
     }
     
     // Method the count of how many times the kanji has been correctly answered
@@ -73,15 +75,112 @@ public class Stats{
             if countKanjiCorrect[CardCreator.cardCreator.listActivatedKAnji[index].kanji] == nil {
                 // If not add it, with 1 as value
                 countKanjiCorrect[CardCreator.cardCreator.listActivatedKAnji[index].kanji] = 1
+                // Save entity with 1 as correct
+                saveCorrectCounting(index: index)
             } else {
                 // If yes, add +1 to the value
                 countKanjiCorrect[CardCreator.cardCreator.listActivatedKAnji[index].kanji]! += 1
+                // Save entity with +1 as correct
+                saveCorrectCounting(index: index)
             }
         }
-//        print(countKanjiCorrect)
-//        print("Total good answer : \(numberTotalGoodAnswer)")
+        //        print(countKanjiCorrect)
+        //        print("Total good answer : \(numberTotalGoodAnswer)")
         print("Percentage of correct answer : \(percentageGoodAnswer) %")
     }
     
+    
+    // MARK: Database Methods
+    
+    // Method to add an kanji in the database
+    private func saveAppearanceCounting (index: Int) {
+        // Check if entity is already existing with the kanji string
+        if StatsEntity.all.contains(where: { $0.kanji == CardCreator.cardCreator.listActivatedKAnji[index].kanji }){
+            // Do +1 in appearance and save
+            print("add one to existing")
+            
+            let request: NSFetchRequest<StatsEntity> = StatsEntity.fetchRequest()
+            if let statistics = try? AppDelegate.viewContext.fetch(request){
+                for i in statistics {
+                    if i.kanji == CardCreator.cardCreator.listActivatedKAnji[index].kanji {
+                        i.appearance += 1
+                    }
+                }
+            }
+            
+            // Save the context
+            try? AppDelegate.viewContext.save()
+            
+        } else {
+            // Create entity and save
+            print("create new entity")
+            
+            let stat = StatsEntity(context: AppDelegate.viewContext)
+            stat.kanji = CardCreator.cardCreator.listActivatedKAnji[index].kanji
+            stat.appearance = 1
+            // Save the context
+            try? AppDelegate.viewContext.save()
+            
+        }
+        
+    }
+    
+    // Method to add an kanji in the database
+    private func saveCorrectCounting (index: Int) {
+        // Check if entity is already existing with the kanji string
+        if StatsEntity.all.contains(where: { $0.kanji == CardCreator.cardCreator.listActivatedKAnji[index].kanji }){
+            // Do +1 in appearance and save
+            print("add one to existing")
+            
+            let request: NSFetchRequest<StatsEntity> = StatsEntity.fetchRequest()
+            if let statistics = try? AppDelegate.viewContext.fetch(request){
+                for i in statistics {
+                    if i.kanji == CardCreator.cardCreator.listActivatedKAnji[index].kanji {
+                        i.correct += 1
+                    }
+                }
+            }
+            
+            // Save the context
+            try? AppDelegate.viewContext.save()
+            
+        } else {
+            // Create entity and save
+            print("Entity not existing, cannot save the correct stat")
+        }
+        
+    }
+    
+    // Method to charge data from database for both libraries
+    func fillKanjiStatLists() {
+        fillCountKanjiQuizz()
+        fillCountKanjiCorrect()
+    }
+    
+    // Method to charge data from database
+    private func fillCountKanjiQuizz() {
+        print("StatsEntity.all.count = ")
+        for i in StatsEntity.all {
+            if i.kanji != nil {
+                print(i.kanji!)
+                print(i.appearance)
+                // Check if kanji is already in library
+                countKanjiQuizz[i.kanji!] = Int(i.appearance)
+            }
+        }
+    }
+    
+    // Method to charge data from database
+    private func fillCountKanjiCorrect() {
+        print("StatsEntity.all.count = ")
+        for i in StatsEntity.all {
+            if i.kanji != nil {
+                print(i.kanji!)
+                print(i.correct)
+                // Check if kanji is already in library
+                countKanjiCorrect[i.kanji!] = Int(i.correct)
+            }
+        }
+    }
     
 }

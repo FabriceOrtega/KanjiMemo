@@ -52,11 +52,11 @@ public class QuizzGame {
         generateRandomPositionArray()
     }
     
-    func generateCorrectTranslationArray(){
+    private func generateCorrectTranslationArray(){
         // Empty the array
         correctTranslationArray = []
         
-        for index in 0...CardCreator.cardCreator.listActivatedKAnji.count-1 {
+        for index in 0...numberCards-1 {
             let englishTranslation =  CardCreator.cardCreator.listActivatedKAnji[index].meanings.joined(separator:", ")
             correctTranslationArray.append(englishTranslation)
         }
@@ -64,11 +64,11 @@ public class QuizzGame {
     }
     
     // Method to generate wrong translation
-    func generateRandomWrongArray(){
+    private func generateRandomWrongArray(){
         // Empty the array
         wrongTranslationArray = []
         
-        for index in 0...CardCreator.cardCreator.listActivatedKAnji.count-1 {
+        for index in 0...numberCards-1 {
             // Generate a ramdom number
             randomWrongTranslation = Int.random(in: 0...CardCreator.cardCreator.listActivatedKAnji.count-1)
             
@@ -87,11 +87,11 @@ public class QuizzGame {
     }
     
     // Method to generate random number for correct translation
-    func generateRandomPositionArray(){
+    private func generateRandomPositionArray(){
         // Empty the array
         randomPositionArray = []
         
-        for _ in 0...CardCreator.cardCreator.listActivatedKAnji.count-1 {
+        for _ in 0...numberCards-1 {
             let randomPositionForCard = Int.random(in: 1...2)
             randomPositionArray.append(randomPositionForCard)
         }

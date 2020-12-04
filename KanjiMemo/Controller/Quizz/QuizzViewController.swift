@@ -84,7 +84,7 @@ class QuizzViewController: UIViewController {
     
     func setUpText(index: Int){
         
-        if index < CardCreator.cardCreator.listActivatedKAnji.count{
+        if index < QuizzGame.quizzGame.numberCards {
             if QuizzGame.quizzGame.randomPositionArray[index] == 1 {
                 leftText.text = String(QuizzGame.quizzGame.correctTranslationArray[index])
                 rightText.text = String(QuizzGame.quizzGame.wrongTranslationArray[index])
