@@ -1,0 +1,5 @@
+[
+    {"kanji":"一","grade":1,"stroke_count":1,"meanings":["one","one radical (no.1)"],"kun_readings":["ひと-","ひと.つ"],"on_readings":["イチ","イツ"],"name_readings":["かず","い","いっ","いる","かつ","かづ","てん","はじめ","ひ","ひとつ","まこと"],"jlpt":4,"unicode":"4e00","heisig_en":"one"},
+    {"kanji":"右","grade":1,"stroke_count":5,"meanings":["right"],"kun_readings":["みぎ"],"on_readings":["ウ","ユウ"],"name_readings":["あき","すけ"],"jlpt":4,"unicode":"53f3","heisig_en":"right"},
+    {"kanji":"雨","grade":1,"stroke_count":8,"meanings":["rain"],"kun_readings":["あめ","あま-","-さめ"],"on_readings":["ウ"],"name_readings":[],"jlpt":4,"unicode":"96e8","heisig_en":"rain"}
+    ]

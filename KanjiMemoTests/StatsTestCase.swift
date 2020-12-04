@@ -5,4 +5,9 @@
 //  Created by Fabrice Ortega on 03/12/2020.
 //
 
-import Foundation
+import XCTest
+@testable import KanjiMemo
+
+class StatsTestCase: XCTestCase {
+    
+}
