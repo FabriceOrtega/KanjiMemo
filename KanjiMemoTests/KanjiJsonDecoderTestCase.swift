@@ -10,7 +10,7 @@ import XCTest
 
 class KanjiJsonDecoderTestCase: XCTestCase {
     
-    func testGetAPIShouldPostAnErrorifError(){
+    func testDecodeKanjiJsonShouldPostAnErrorifError(){
         let myAPI = KanjiJsonDecoder(session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -28,7 +28,7 @@ class KanjiJsonDecoderTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetAPIShouldPostAnErrorifNoData(){
+    func testDecodeKanjiJsonShouldPostAnErrorifNoData(){
         let myAPI = KanjiJsonDecoder(session: URLSessionFake(data: nil, response: nil, error: nil))
         
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -46,7 +46,7 @@ class KanjiJsonDecoderTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetAPIShouldPostAnErrorifIncorrectResponse(){
+    func testDecodeKanjiJsonShouldPostAnErrorifIncorrectResponse(){
         let myAPI = KanjiJsonDecoder(session: URLSessionFake(data: FakeResponseData.APICorrectData, response: FakeResponseData.responseKO, error: nil))
         
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -64,7 +64,7 @@ class KanjiJsonDecoderTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetAPIShouldPostAnErrorifCorrectResponse(){
+    func testDecodeKanjiJsonShouldPostAnErrorifCorrectResponse(){
         let myAPI = KanjiJsonDecoder(session: URLSessionFake(data: FakeResponseData.APICorrectData, response: FakeResponseData.responseOK, error: nil))
         
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -82,7 +82,7 @@ class KanjiJsonDecoderTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetAPIShouldPostAnErrorifIncorrectData(){
+    func testDecodeKanjiJsonShouldPostAnErrorifIncorrectData(){
         let myAPI = KanjiJsonDecoder(session: URLSessionFake(data: FakeResponseData.APIIncorrectData, response: FakeResponseData.responseOK, error: nil))
         
         let expectation = XCTestExpectation(description: "Wait for queue change")
@@ -100,7 +100,7 @@ class KanjiJsonDecoderTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetAPIShouldBeSuccessfullWhenAllIsCorrect(){
+    func testDecodeKanjiJsonShouldBeSuccessfullWhenAllIsCorrect(){
         let myAPI = KanjiJsonDecoder(session: URLSessionFake(data: FakeResponseData.APICorrectData, response: FakeResponseData.responseOK, error: nil))
         
         // Build the expected result
