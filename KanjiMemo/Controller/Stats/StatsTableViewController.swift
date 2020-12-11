@@ -17,6 +17,9 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // Circle for percentage
     var roundView: UIView!
     
+    // To pass data to the detailled view
+    var kanjiDetailData: Kanji!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         statsTableView.reloadData()
@@ -55,6 +58,9 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             // Set the correct answers if more than 1
             cell?.correctLabel.text = "Correct : \(Stats.stats.countKanjiCorrect[kanjiCurrentKey]!)"
             
+            // Set the correct percentage
+            cell?.percentageLabel.text = String(percentageKanjiCell) + " %"
+            
             // Draw the circle with the percentage in it
             drawCircle(percentage: percentageKanjiCell, cell: cell)
         }
@@ -62,7 +68,7 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell!
     }
     
-    // Draw percentage circle with percentage label
+    //MARK: Draw percentage circle with percentage label
     func drawCircle(percentage: Int, cell: StatsTableViewCell?){
         // Calculate the circle radius
         var circleRadius: CGFloat {
@@ -79,58 +85,31 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             return (cell?.frame.height)!/2 - (circleRadius/2)
         }
         
-        // Define round frame
-        roundView = UIView(frame:CGRect(x: circleXPosition, y: circleYPosition, width: circleRadius, height: circleRadius))
+        // Call method from PercentageCircle class
+        roundView = PercentageCircle.percentageCircle.createPercentageCircle(percentage: percentage, circleRadius: circleRadius, circleXPosition: circleXPosition, circleYPosition: circleYPosition, circleWidth: 5, animation: false)
         
-        roundView.backgroundColor = #colorLiteral(red: 0.9892122149, green: 0.5115820765, blue: 0.5676863194, alpha: 1)
-        // Make the frame round
-        roundView.layer.cornerRadius = roundView.frame.size.width / 2
-        
-        // Start of the arc corresponds to 12 0'clock
-        let startAngle = -CGFloat.pi / 2
-        // Proportion depending of percentage
-        let proportion = CGFloat(percentage)
-        let centre = CGPoint (x: roundView.frame.size.width / 2, y: roundView.frame.size.height / 2)
-        let radius = roundView.frame.size.width / 2
-        // The proportion of a full circle
-        let arc = CGFloat.pi * 2 * proportion / 100
-        
-        // Start a mutable path
-        let cPath = UIBezierPath()
-        // Move to the centre
-        cPath.move(to: centre)
-        // Draw a line to the circumference
-        cPath.addLine(to: CGPoint(x: centre.x + radius * cos(startAngle), y: centre.y + radius * sin(startAngle)))
-        // NOW draw the arc
-        cPath.addArc(withCenter: centre, radius: radius, startAngle: startAngle, endAngle: arc + startAngle, clockwise: true)
-        // Line back to the centre, where we started (or the stroke doesn't work, though the fill does)
-        cPath.addLine(to: CGPoint(x: centre.x, y: centre.y))
-        
-        // circle shape
-        let circleShape = CAShapeLayer()
-        circleShape.path = cPath.cgPath
-        circleShape.fillColor = #colorLiteral(red: 0.6772955656, green: 1, blue: 0.6902360916, alpha: 1)
-        // add sublayer with transparency
-        roundView.alpha = 1
-        roundView.layer.addSublayer(circleShape)
-        
-        // White round
-        let whiteRoundView = UIView(frame:CGRect(x: 5, y: 5, width: circleRadius-10, height: circleRadius-10))
-        whiteRoundView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        whiteRoundView.layer.cornerRadius = whiteRoundView.frame.size.width / 2
-        
-        // Percentage Label
-        let percentLabel = CATextLayer()
-        percentLabel.font = UIFont.systemFont(ofSize: 17)
-        percentLabel.fontSize = 12
-        percentLabel.frame = CGRect(x: 0, y: circleRadius/2 - percentLabel.fontSize/2, width: circleRadius, height: circleRadius)
-        percentLabel.string = String(percentage) + " %"
-        percentLabel.foregroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        percentLabel.alignmentMode = CATextLayerAlignmentMode.center
-        
-        // add subview
-        roundView.addSubview(whiteRoundView)
-        roundView.layer.addSublayer(percentLabel)
         cell?.addSubview(roundView)
+    }
+    
+    // MARK: TableView delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        // attribute the data
+        let kanjiName = kanjiStatArray[indexPath.row]
+        
+        
+        let kanjiIndexToPass = Stats.stats.listOfAllKanji.firstIndex(where: { $0.kanji == kanjiName })!
+        let kanjiToPass = Stats.stats.listOfAllKanji[kanjiIndexToPass]
+        
+        kanjiDetailData = kanjiToPass
+        
+        performSegue(withIdentifier: "toKanjiDetailStats", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toKanjiDetailStats" {
+            let detailVC = segue.destination as! KanjiDetailViewController
+            detailVC.kanjiDetailData = kanjiDetailData
+        }
     }
 }

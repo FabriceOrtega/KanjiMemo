@@ -52,9 +52,14 @@ class StatsViewController: UIViewController {
         
         // If no good answer stored, percentage is zero
         if Stats.stats.numberTotalGoodAnswer > 0 {
-            drawCircle(percentage: Stats.stats.percentageGoodAnswer)
+            // Draw circle
+            roundView = PercentageCircle.percentageCircle.createPercentageCircle(percentage: Stats.stats.percentageGoodAnswer, circleRadius: circleRadius, circleXPosition: circleXPosition, circleYPosition: circleYPosition, circleWidth: 12, animation: true)
+            self.view.addSubview(roundView)
         } else {
-            drawCircle(percentage: 0)
+            // Draw circle at O%
+            roundView = PercentageCircle.percentageCircle.createPercentageCircle(percentage: 0, circleRadius: circleRadius, circleXPosition: circleXPosition, circleYPosition: circleYPosition, circleWidth: 12, animation: true)
+            
+            self.view.addSubview(roundView)
         }
         
         // Send the circle to the back
@@ -88,54 +93,6 @@ class StatsViewController: UIViewController {
         if segue.identifier == "toStatsDetails" {
             _ = segue.destination as! StatsTableViewController
         }
-    }
-    
-
-    
-    // Draw percentage circle
-    func drawCircle(percentage: Int){
-        roundView = UIView(frame:CGRect(x: circleXPosition, y: circleYPosition, width: circleRadius, height: circleRadius))
-        
-        roundView.backgroundColor = #colorLiteral(red: 0.9892122149, green: 0.5115820765, blue: 0.5676863194, alpha: 1)
-        // Make the frame round
-        roundView.layer.cornerRadius = roundView.frame.size.width / 2
-        
-        // Start of the arc corresponds to 12 0'clock
-        let startAngle = -CGFloat.pi / 2
-        // Proportion depending of percentage
-        let proportion = CGFloat(percentage)
-        let centre = CGPoint (x: roundView.frame.size.width / 2, y: roundView.frame.size.height / 2)
-        let radius = roundView.frame.size.width / 2
-        // The proportion of a full circle
-        let arc = CGFloat.pi * 2 * proportion / 100
-        
-        // Start a mutable path
-        let cPath = UIBezierPath()
-        // Move to the centre
-        cPath.move(to: centre)
-        // Draw a line to the circumference
-        cPath.addLine(to: CGPoint(x: centre.x + radius * cos(startAngle), y: centre.y + radius * sin(startAngle)))
-        // NOW draw the arc
-        cPath.addArc(withCenter: centre, radius: radius, startAngle: startAngle, endAngle: arc + startAngle, clockwise: true)
-        // Line back to the centre, where we started (or the stroke doesn't work, though the fill does)
-        cPath.addLine(to: CGPoint(x: centre.x, y: centre.y))
-        
-        // circle shape
-        let circleShape = CAShapeLayer()
-        circleShape.path = cPath.cgPath
-        circleShape.fillColor = #colorLiteral(red: 0.6772955656, green: 1, blue: 0.6902360916, alpha: 1)
-        // add sublayer with transparency
-        roundView.alpha = 1
-        roundView.layer.addSublayer(circleShape)
-        
-        // White round
-        let whiteRoundView = UIView(frame:CGRect(x: 12, y: 12, width: circleRadius-24, height: circleRadius-24))
-        whiteRoundView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        whiteRoundView.layer.cornerRadius = whiteRoundView.frame.size.width / 2
-        
-        // add subview
-        roundView.addSubview(whiteRoundView)
-        self.view.addSubview(roundView)
     }
     
 }

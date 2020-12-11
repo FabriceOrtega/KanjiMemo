@@ -22,6 +22,7 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             DispatchQueue.main.async {
                 self.kanjiTableView.reloadData()
                 self.fillKanjiActivatedList()
+                Stats.stats.listOfAllKanji = self.listKanji
             }
         }
     }

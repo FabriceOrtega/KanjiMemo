@@ -13,6 +13,9 @@ public class Stats{
     // Singleton pattern
     public static let stats = Stats()
     
+    // Copy the list for usage of detail view in stats
+    var listOfAllKanji: [Kanji] = []
+    
     // Dictionary to store how many times the kanji have appeared in the quizz
     var countKanjiQuizz: [String:Int] = [:]
     

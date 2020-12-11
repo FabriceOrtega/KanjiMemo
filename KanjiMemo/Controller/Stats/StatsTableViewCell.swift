@@ -13,6 +13,8 @@ class StatsTableViewCell: UITableViewCell {
     @IBOutlet weak var kanjiLabel: UILabel!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var appearnceLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -22,6 +22,7 @@
 		1C369E192560779100BA1A7D /* Kanji.json in Resources */ = {isa = PBXBuildFile; fileRef = 1C369E182560779100BA1A7D /* Kanji.json */; };
 		1C369E1D256078B600BA1A7D /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369E1C256078B600BA1A7D /* Kanji.swift */; };
 		1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */; };
+		1C49AAC8257A714E009FC7CD /* PercentageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49AAC7257A714E009FC7CD /* PercentageCircle.swift */; };
 		1C61A00C256FF412000185BA /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61A00B256FF412000185BA /* Stats.swift */; };
 		1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C793D782566DFF2003980F5 /* QuizzGame.swift */; };
 		1C7BA2EF2573A19100EB3612 /* StatsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */; };
@@ -70,6 +71,7 @@
 		1C369E182560779100BA1A7D /* Kanji.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Kanji.json; sourceTree = "<group>"; };
 		1C369E1C256078B600BA1A7D /* Kanji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
 		1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiJsonDecoder.swift; sourceTree = "<group>"; };
+		1C49AAC7257A714E009FC7CD /* PercentageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageCircle.swift; sourceTree = "<group>"; };
 		1C61A00B256FF412000185BA /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		1C793D782566DFF2003980F5 /* QuizzGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzGame.swift; sourceTree = "<group>"; };
 		1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsEntity.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1C940C06256673520040FBB8 /* CardCreator.swift */,
 				1C793D782566DFF2003980F5 /* QuizzGame.swift */,
 				1C61A00B256FF412000185BA /* Stats.swift */,
+				1C49AAC7257A714E009FC7CD /* PercentageCircle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				1C933655256118C200A6AE1C /* KanjiTableViewController.swift in Sources */,
 				1C369DFB256076C300BA1A7D /* AppDelegate.swift in Sources */,
 				1C8116AA2570F8D100C2004B /* StatsTableViewController.swift in Sources */,
+				1C49AAC8257A714E009FC7CD /* PercentageCircle.swift in Sources */,
 				1C8116AD2570F8E700C2004B /* StatsTableViewCell.swift in Sources */,
 				1C8116A72570F28B00C2004B /* StatsViewController.swift in Sources */,
 				1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */,

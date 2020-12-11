@@ -82,7 +82,7 @@
                             <constraint firstItem="P2P-AR-AFo" firstAttribute="bottom" secondItem="RTy-g9-ua0" secondAttribute="bottom" constant="10" id="s6E-85-Cxf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Quizz" image="questionmark" catalog="system" id="MHm-jX-nEt"/>
+                    <tabBarItem key="tabBarItem" title="Quizz" image="questionmark" id="MHm-jX-nEt"/>
                     <connections>
                         <outlet property="leftText" destination="x6n-K6-xAF" id="94A-hD-aV6"/>
                         <outlet property="rightText" destination="V5a-8l-qbE" id="BvW-0Q-YpU"/>
@@ -136,7 +136,7 @@
                     <connections>
                         <outlet property="numberKanjiUsed" destination="bzf-bh-Yze" id="u5Y-PA-JAd"/>
                         <outlet property="percentageCorrectAnswer" destination="APr-aX-fyK" id="P61-nz-UkX"/>
-                        <segue destination="GyE-q2-eWy" kind="showDetail" identifier="toStatsDetails" id="CO1-5V-S36"/>
+                        <segue destination="GyE-q2-eWy" kind="show" identifier="toStatsDetails" id="CO1-5V-S36"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0z-0l-ZrT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -148,11 +148,11 @@
             <objects>
                 <viewController id="GyE-q2-eWy" customClass="StatsTableViewController" customModule="KanjiMemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NYj-Bc-T1T">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2NM-Nh-Ixf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailStatsCell" id="6c8-cU-ksz" customClass="StatsTableViewCell" customModule="KanjiMemo" customModuleProvider="target">
@@ -189,6 +189,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flk-GM-FbU">
+                                                    <rect key="frame" x="327" y="29.666666666666671" width="32" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="IIw-3U-hkl" firstAttribute="leading" secondItem="cew-tS-kpG" secondAttribute="trailing" constant="40" id="3wO-41-mwV"/>
@@ -196,6 +202,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="IIw-3U-hkl" secondAttribute="trailing" id="9Ua-3d-4Cy"/>
                                                 <constraint firstAttribute="bottom" secondItem="IIw-3U-hkl" secondAttribute="bottom" constant="10" id="Dqg-5C-SJO"/>
                                                 <constraint firstItem="cew-tS-kpG" firstAttribute="top" secondItem="lhZ-Bn-ucd" secondAttribute="top" constant="10" id="Sd6-K4-byn"/>
+                                                <constraint firstItem="Flk-GM-FbU" firstAttribute="centerY" secondItem="lhZ-Bn-ucd" secondAttribute="centerY" id="V1h-JB-N3O"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Flk-GM-FbU" secondAttribute="trailing" id="Y2K-kX-O8k"/>
+                                                <constraint firstItem="Flk-GM-FbU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cew-tS-kpG" secondAttribute="trailing" constant="8" symbolic="YES" id="YUY-4f-9uD"/>
                                                 <constraint firstAttribute="bottom" secondItem="cew-tS-kpG" secondAttribute="bottom" constant="10" id="ZAk-M7-yyY"/>
                                                 <constraint firstItem="IIw-3U-hkl" firstAttribute="leading" secondItem="E7e-Nn-HA6" secondAttribute="leading" id="k4X-HW-MTr"/>
                                                 <constraint firstItem="cew-tS-kpG" firstAttribute="leading" secondItem="lhZ-Bn-ucd" secondAttribute="leading" constant="20" id="ozT-Cg-NDB"/>
@@ -206,6 +215,7 @@
                                             <outlet property="appearnceLabel" destination="IIw-3U-hkl" id="aJa-U1-SYi"/>
                                             <outlet property="correctLabel" destination="E7e-Nn-HA6" id="fxe-Qd-t5I"/>
                                             <outlet property="kanjiLabel" destination="cew-tS-kpG" id="mtS-q8-8Sy"/>
+                                            <outlet property="percentageLabel" destination="Flk-GM-FbU" id="kZe-ig-Tm9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -224,13 +234,15 @@
                             <constraint firstItem="2NM-Nh-Ixf" firstAttribute="top" secondItem="HPu-HU-Rmg" secondAttribute="top" id="uIc-9c-kyE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ZrS-H8-66B"/>
                     <connections>
                         <outlet property="statsTableView" destination="2NM-Nh-Ixf" id="uof-Pw-Eru"/>
+                        <segue destination="W8Z-gJ-HG8" kind="showDetail" identifier="toKanjiDetailStats" id="wyT-Jt-CSg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVq-Wa-igs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3496.8000000000002" y="883.74384236453204"/>
+            <point key="canvasLocation" x="3550" y="884"/>
         </scene>
         <!--Alarm View Controller-->
         <scene sceneID="rAk-Vb-7y4">
@@ -242,7 +254,7 @@
                         <viewLayoutGuide key="safeArea" id="S3D-4m-Onc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Alarm" image="bell.fill" catalog="system" id="g3S-BH-CZ1"/>
+                    <tabBarItem key="tabBarItem" title="Alarm" image="bell.fill" id="g3S-BH-CZ1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIw-dY-Q5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,12 +338,12 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYH-kx-rvy">
-                                <rect key="frame" x="10" y="692.33333333333337" width="34.333333333333336" height="33.666666666666629"/>
+                                <rect key="frame" x="10" y="691" width="34.333333333333336" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dYH-kx-rvy" secondAttribute="height" multiplier="21:22" id="43r-wm-FGg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" backgroundImage="switch.2" catalog="system">
+                                <state key="normal" backgroundImage="switch.2">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <connections>
@@ -505,13 +517,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGA-Qw-7DU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="-576"/>
+            <point key="canvasLocation" x="4671" y="-19"/>
         </scene>
         <!--Kanji List-->
         <scene sceneID="eBh-Kv-GHl">
             <objects>
                 <navigationController id="tgh-Zh-Hpk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kanji List" image="character.zh" catalog="system" selectedImage="character.zh" id="Bd1-Rc-I0v"/>
+                    <tabBarItem key="tabBarItem" title="Kanji List" image="chart.bar.doc.horizontal.fill" selectedImage="chart.bar.doc.horizontal.fill" id="Bd1-Rc-I0v"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hzP-1D-lH9">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -563,7 +575,7 @@
         <scene sceneID="JDS-MV-VbQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vvx-cD-Se8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" image="chart.bar.xaxis" catalog="system" id="Qgu-du-0vf"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="chart.bar.xaxis" id="Qgu-du-0vf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AMD-5z-vJo">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -579,12 +591,15 @@
             <point key="canvasLocation" x="1765.5999999999999" y="883.74384236453204"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wyT-Jt-CSg"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
-        <image name="character.zh" catalog="system" width="128" height="123"/>
-        <image name="chart.bar.xaxis" catalog="system" width="128" height="98"/>
-        <image name="questionmark" catalog="system" width="96" height="128"/>
-        <image name="switch.2" catalog="system" width="128" height="109"/>
+        <image name="bell.fill" width="12" height="14"/>
+        <image name="chart.bar.doc.horizontal.fill" width="11" height="14"/>
+        <image name="chart.bar.xaxis" width="14" height="11"/>
+        <image name="questionmark" width="7" height="12"/>
+        <image name="switch.2" width="13" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
