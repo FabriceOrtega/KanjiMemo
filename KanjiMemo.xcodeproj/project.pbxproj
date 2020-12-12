@@ -35,6 +35,8 @@
 		1C940BF7256665120040FBB8 /* QuizzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BF6256665120040FBB8 /* QuizzViewController.swift */; };
 		1C940BFD25666AC80040FBB8 /* QuizzCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */; };
 		1C940C07256673520040FBB8 /* CardCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C940C06256673520040FBB8 /* CardCreator.swift */; };
+		1C97218E2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C97218C2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf */; };
+		1C97218F2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C97218D2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf */; };
 		1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */; };
 		1CBE109525727E260070E329 /* KanjiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE109425727E260070E329 /* KanjiEntity.swift */; };
 		1CF2E1F0257941C100001F55 /* StatsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF2E1EF257941C100001F55 /* StatsTestCase.swift */; };
@@ -84,6 +86,8 @@
 		1C940BF6256665120040FBB8 /* QuizzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzViewController.swift; sourceTree = "<group>"; };
 		1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCardViewController.swift; sourceTree = "<group>"; };
 		1C940C06256673520040FBB8 /* CardCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreator.swift; sourceTree = "<group>"; };
+		1C97218C2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdobeFanHeitiStd-Bold.otf"; sourceTree = "<group>"; };
+		1C97218D2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hiragino-kaku-gothic-std-w8.otf"; sourceTree = "<group>"; };
 		1CA9D66B256BF729003F0BBE /* KanjiMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiMemo.xcdatamodel; sourceTree = "<group>"; };
 		1CBE109425727E260070E329 /* KanjiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiEntity.swift; sourceTree = "<group>"; };
 		1CF2E1EF257941C100001F55 /* StatsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTestCase.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				1C369E12256076DB00BA1A7D /* View */,
 				1C369E11256076D600BA1A7D /* Model */,
 				1C369E0F256076CB00BA1A7D /* Supporting files */,
+				1CAB706C258373B800225AA3 /* Fonts */,
 				1C369E08256076C400BA1A7D /* Info.plist */,
 			);
 			path = KanjiMemo;
@@ -248,6 +253,15 @@
 			children = (
 			);
 			path = Alarm;
+			sourceTree = "<group>";
+		};
+		1CAB706C258373B800225AA3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1C97218C2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf */,
+				1C97218D2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		205785B1103C021BE807213F /* Frameworks */ = {
@@ -358,6 +372,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C97218E2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf in Resources */,
+				1C97218F2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf in Resources */,
 				1C369E07256076C400BA1A7D /* LaunchScreen.storyboard in Resources */,
 				1C369E04256076C400BA1A7D /* Assets.xcassets in Resources */,
 				1C369E02256076C300BA1A7D /* Main.storyboard in Resources */,

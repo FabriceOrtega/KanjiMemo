@@ -11,8 +11,7 @@ class PercentageCircle{
     // Pattern singleton
     public static let percentageCircle = PercentageCircle()
     
-    // Percentage circle to be animated
-    let percentageCircle = CAShapeLayer()
+    
     
     // Public init for pattern singleton
     public init() {}
@@ -23,7 +22,13 @@ class PercentageCircle{
                                 circleXPosition: CGFloat,
                                 circleYPosition: CGFloat,
                                 circleWidth: CGFloat,
+                                circleColor: CGColor,
+                                backgroundColor: CGColor,
                                 animation: Bool) -> UIView? {
+        
+        // Percentage circle to be animated
+        let percentageCircle = CAShapeLayer()
+        
         // Add a view
         let roundView = UIView(frame:CGRect(x: circleXPosition, y: circleYPosition, width: circleRadius, height: circleRadius))
         
@@ -41,8 +46,8 @@ class PercentageCircle{
         // Add path for background circle
         let pathBackground = UIBezierPath(arcCenter: centre, radius: radius, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi , clockwise: true)
         // Attributes of the background circle
-        backgroundCircle.strokeColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        backgroundCircle.lineWidth = circleWidth
+        backgroundCircle.strokeColor = backgroundColor
+        backgroundCircle.lineWidth = circleWidth * 1.7
         // Put transparency to the center of the circles
         backgroundCircle.fillColor = UIColor.clear.cgColor
         // Atribute the path
@@ -58,7 +63,7 @@ class PercentageCircle{
         percentageCircle.path = circularPath.cgPath
         
         // Attributes of the percentage circle
-        percentageCircle.strokeColor = #colorLiteral(red: 0.6772955656, green: 1, blue: 0.6902360916, alpha: 1)
+        percentageCircle.strokeColor = circleColor
         percentageCircle.lineWidth = circleWidth
         percentageCircle.lineCap = .round
         percentageCircle.fillColor = UIColor.clear.cgColor
@@ -68,30 +73,21 @@ class PercentageCircle{
             // Do not draw the circle
             percentageCircle.strokeEnd = 0.0
             // Draw the circle thru the animation
-            animateCircle()
+            animateCircle(percentageCircle: percentageCircle)
             // Add the circle to the the view
             roundView.layer.addSublayer(percentageCircle)
         } else {
-            // Define a circle for the percentage (it has to be inside the method to be used in the table view cells)
-            let percentageCircle2 = CAShapeLayer()
-            // Attribute the path to the second percentage circle
-            percentageCircle2.path = circularPath.cgPath
-            // Attributes of the second percentage circle
-            percentageCircle2.strokeColor = #colorLiteral(red: 0.6772955656, green: 1, blue: 0.6902360916, alpha: 1)
-            percentageCircle2.lineWidth = circleWidth
-            percentageCircle2.lineCap = .round
-            percentageCircle2.fillColor = UIColor.clear.cgColor
-            // Do not draw the circle
-            percentageCircle2.strokeEnd = 1.0
+            // Draw the circle
+            percentageCircle.strokeEnd = 1.0
             // Add the circle to the the view
-            roundView.layer.addSublayer(percentageCircle2)
+            roundView.layer.addSublayer(percentageCircle)
         }
         
         return roundView
     }
     
     // Method to animate the circle
-    private func animateCircle() {
+    private func animateCircle(percentageCircle: CAShapeLayer) {
         let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
         // Set the animation to the total value
         basicAnimation.toValue = 1

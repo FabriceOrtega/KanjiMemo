@@ -27,6 +27,11 @@ public class Stats{
         return countKanjiQuizz.count
     }
     
+    // Percentage of kanji used / kanji availabel in app
+    var percentageKanjiUsed: Int {
+        return Int(100 * (Double(numberOfKanjiFromQuizz) / Double(listOfAllKanji.count)))
+    }
+    
     // Number of total cards swipped
     var numberTotalCardSwipped: Int {
         var sum = 0
@@ -89,7 +94,7 @@ public class Stats{
         }
         //        print(countKanjiCorrect)
         //        print("Total good answer : \(numberTotalGoodAnswer)")
-        print("Percentage of correct answer : \(percentageGoodAnswer) %")
+//        print("Percentage of correct answer : \(percentageGoodAnswer) %")
     }
     
     
@@ -100,7 +105,7 @@ public class Stats{
         // Check if entity is already existing with the kanji string
         if StatsEntity.all.contains(where: { $0.kanji == CardCreator.cardCreator.listActivatedKAnji[index].kanji }){
             // Do +1 in appearance and save
-            print("add one to existing")
+//            print("add one to existing")
             
             let request: NSFetchRequest<StatsEntity> = StatsEntity.fetchRequest()
             if let statistics = try? AppDelegate.viewContext.fetch(request){
@@ -116,7 +121,7 @@ public class Stats{
             
         } else {
             // Create entity and save
-            print("create new entity")
+//            print("create new entity")
             
             let stat = StatsEntity(context: AppDelegate.viewContext)
             stat.kanji = CardCreator.cardCreator.listActivatedKAnji[index].kanji
@@ -133,7 +138,7 @@ public class Stats{
         // Check if entity is already existing with the kanji string
         if StatsEntity.all.contains(where: { $0.kanji == CardCreator.cardCreator.listActivatedKAnji[index].kanji }){
             // Do +1 in appearance and save
-            print("add one to existing")
+//            print("add one to existing")
             
             let request: NSFetchRequest<StatsEntity> = StatsEntity.fetchRequest()
             if let statistics = try? AppDelegate.viewContext.fetch(request){
@@ -148,8 +153,7 @@ public class Stats{
             try? AppDelegate.viewContext.save()
             
         } else {
-            // Create entity and save
-            print("Entity not existing, cannot save the correct stat")
+//            print("Entity not existing, cannot save the correct stat")
         }
         
     }
@@ -165,8 +169,8 @@ public class Stats{
         print("StatsEntity.all.count = ")
         for i in StatsEntity.all {
             if i.kanji != nil {
-                print(i.kanji!)
-                print(i.appearance)
+//                print(i.kanji!)
+//                print(i.appearance)
                 // Check if kanji is already in library
                 countKanjiQuizz[i.kanji!] = Int(i.appearance)
             }
@@ -178,8 +182,8 @@ public class Stats{
         print("StatsEntity.all.count = ")
         for i in StatsEntity.all {
             if i.kanji != nil {
-                print(i.kanji!)
-                print(i.correct)
+//                print(i.kanji!)
+//                print(i.correct)
                 // Check if kanji is already in library
                 countKanjiCorrect[i.kanji!] = Int(i.correct)
             }

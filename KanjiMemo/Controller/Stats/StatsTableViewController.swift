@@ -86,7 +86,8 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         // Call method from PercentageCircle class
-        roundView = PercentageCircle.percentageCircle.createPercentageCircle(percentage: percentage, circleRadius: circleRadius, circleXPosition: circleXPosition, circleYPosition: circleYPosition, circleWidth: 5, animation: false)
+
+        roundView = PercentageCircle.percentageCircle.createPercentageCircle(percentage: percentage, circleRadius: circleRadius, circleXPosition: circleXPosition, circleYPosition: circleYPosition, circleWidth: 5, circleColor: #colorLiteral(red: 0.276517272, green: 0.2243287563, blue: 0.4410637617, alpha: 1), backgroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), animation: false)
         
         cell?.addSubview(roundView)
     }

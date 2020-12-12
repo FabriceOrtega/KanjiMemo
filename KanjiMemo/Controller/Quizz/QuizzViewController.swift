@@ -11,11 +11,18 @@ import Shuffle_iOS
 class QuizzViewController: UIViewController {
     
     // Translation text labels (one correct, one wrong)
-    @IBOutlet weak var leftText: UILabel!
-    @IBOutlet weak var rightText: UILabel!
+    @IBOutlet weak var upText: UILabel!
+    @IBOutlet weak var downText: UILabel!
     
     //Score label
     @IBOutlet weak var scoreLabel: UILabel!
+    
+    // Number of cards in quizz label
+    @IBOutlet weak var numberOfCardsLabel: UILabel!
+    
+    // Right/Wrong images
+    @IBOutlet weak var rightImageView: UIImageView!
+    @IBOutlet weak var wrongImageView: UIImageView!
     
     // Parameter for to show the path to the QuizzCardViewController
     var quizzCardVC: QuizzCardViewController!
@@ -25,15 +32,15 @@ class QuizzViewController: UIViewController {
         super.viewDidLoad()
         
         // Set initial texts to empty
-        leftText.text = ""
-        rightText.text = ""
+        upText.text = ""
+        downText.text = ""
         scoreLabel.text = ""
         
-        // Observe the swipe of the card left
-        NotificationCenter.default.addObserver(self, selector: #selector(cardDidSwipeLeft(notification:)), name: QuizzCardViewController.notificationDidSwipeLeft, object: nil)
+        // Observe the swipe of the card up
+        NotificationCenter.default.addObserver(self, selector: #selector(cardDidSwipeUp(notification:)), name: QuizzCardViewController.notificationDidSwipeUp, object: nil)
         
-        // Observe the swipe of the card right
-        NotificationCenter.default.addObserver(self, selector: #selector(cardDidSwipeRight(notification:)), name: QuizzCardViewController.notificationDidSwipeRight, object: nil)
+        // Observe the swipe of the card down
+        NotificationCenter.default.addObserver(self, selector: #selector(cardDidSwipeDown(notification:)), name: QuizzCardViewController.notificationDidSwipeDown, object: nil)
     }
     
     
@@ -49,7 +56,7 @@ class QuizzViewController: UIViewController {
     
     // Method to attribute the parameters to quizzcard
     func attributeParamatersForSegue(){
-        //PASS the parameters here
+        //Placeholder to pass the parameters here
     }
     
 
@@ -86,26 +93,26 @@ class QuizzViewController: UIViewController {
         
         if index < QuizzGame.quizzGame.numberCards {
             if QuizzGame.quizzGame.randomPositionArray[index] == 1 {
-                leftText.text = String(QuizzGame.quizzGame.correctTranslationArray[index])
-                rightText.text = String(QuizzGame.quizzGame.wrongTranslationArray[index])
+                upText.text = String(QuizzGame.quizzGame.correctTranslationArray[index])
+                downText.text = String(QuizzGame.quizzGame.wrongTranslationArray[index])
             } else {
-                leftText.text = String(QuizzGame.quizzGame.wrongTranslationArray[index])
-                rightText.text = String(QuizzGame.quizzGame.correctTranslationArray[index])
+                upText.text = String(QuizzGame.quizzGame.wrongTranslationArray[index])
+                downText.text = String(QuizzGame.quizzGame.correctTranslationArray[index])
             }
         } else {
-            leftText.text = ""
-            rightText.text = ""
+            upText.text = ""
+            downText.text = ""
             // Game is over
             QuizzGame.quizzGame.quizzIsOn = false
         }
     }
     
-    // Method executed when the card swiped to the left
-    @objc func cardDidSwipeLeft(notification:Notification) {
+    // Method executed when the card swiped to the up
+    @objc func cardDidSwipeUp(notification:Notification) {
         // Set next card
         setUpText(index: (notification.userInfo!["index"] as! Int)+1)
         
-        // Call the quizz game method for left position (position 1)
+        // Call the quizz game method for up position (position 1)
         QuizzGame.quizzGame.checkIfCorrectTranslation(index: (notification.userInfo!["index"] as! Int), position: 1)
         
         // Animate the score if correctly answered
@@ -115,12 +122,12 @@ class QuizzViewController: UIViewController {
         setScoreLabel()
     }
     
-    // Method executed when the card swiped to the right
-    @objc func cardDidSwipeRight(notification:Notification) {
+    // Method executed when the card swiped to the down
+    @objc func cardDidSwipeDown(notification:Notification) {
         // Set next card
         setUpText(index: (notification.userInfo!["index"] as! Int)+1)
         
-        // Call the quizz game method  for left position (position 2)
+        // Call the quizz game method  for down position (position 2)
         QuizzGame.quizzGame.checkIfCorrectTranslation(index: (notification.userInfo!["index"] as! Int), position: 2)
         
         // Animate the score if correctly answered
@@ -132,19 +139,42 @@ class QuizzViewController: UIViewController {
     
     // Method to set the score label
     func setScoreLabel(){
-        scoreLabel.text = "Score : " + String(QuizzGame.quizzGame.score) + " / " + String(QuizzGame.quizzGame.numberCards)
+        if QuizzGame.quizzGame.score > 9 {
+            scoreLabel.text = String(QuizzGame.quizzGame.score)
+        } else {
+            scoreLabel.text = "0" + String(QuizzGame.quizzGame.score)
+        }
+        
+        if QuizzGame.quizzGame.numberCards > 9 {
+            numberOfCardsLabel.text = String(QuizzGame.quizzGame.numberCards)
+        } else {
+            numberOfCardsLabel.text = "0" + String(QuizzGame.quizzGame.numberCards)
+        }
+        
     }
     
     // Method to animate the score text label
     func animateScoreLabel(index: Int, position: Int){
         // Check if question has been correctly answered
         if QuizzGame.quizzGame.randomPositionArray[index] == position {
-            // Scale briefly the label
-            UIView.animate(withDuration: 0.5) {
-                self.scoreLabel.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
+            // Scale briefly the label and show the right image
+            UIView.animate(withDuration: 2) {
+                self.scoreLabel.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
+                self.rightImageView.isHidden = false
+                self.rightImageView.alpha = 1.0
             }
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 2) {
                 self.scoreLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.rightImageView.alpha = 0.0
+            }
+        } else {
+            // Show the briefly wrong image
+            UIView.animate(withDuration: 2) {
+                self.wrongImageView.isHidden = false
+                self.wrongImageView.alpha = 1.0
+            }
+            UIView.animate(withDuration: 2) {
+                self.wrongImageView.alpha = 0.0
             }
         }
     }

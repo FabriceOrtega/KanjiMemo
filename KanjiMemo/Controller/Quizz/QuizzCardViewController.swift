@@ -18,17 +18,17 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     
     // Calculate the card size
     var cardWidth: CGFloat {
-        return UIScreen.main.bounds.width - 40
+        return UIScreen.main.bounds.width
     }
     var cardHeight: CGFloat {
-        return UIScreen.main.bounds.height - 320
+        return (UIScreen.main.bounds.height)/3
     }
     
-    // Set up a notification when card did swipe to the left
-    static let notificationDidSwipeLeft = Notification.Name("didSwipeCardLeft")
+    // Set up a notification when card did swipe to the up
+    static let notificationDidSwipeUp = Notification.Name("didSwipeCardUp")
     
-    // Set up a notification when card did swipe to the left
-    static let notificationDidSwipeRight = Notification.Name("didSwipeCardRight")
+    // Set up a notification when card did swipe to the down
+    static let notificationDidSwipeDown = Notification.Name("didSwipeCardDown")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,17 +48,17 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
         // Instanciate the card
         let card = SwipeCard()
         // Accepted direction
-        card.swipeDirections = [.left, .right]
+        card.swipeDirections = [.up, .down]
         card.content = UIImageView(image: image)
         
         // Attribute colors to cards when swipped
-        let leftOverlay = UIView()
-        leftOverlay.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        let upOverlay = UIView()
+        upOverlay.backgroundColor = #colorLiteral(red: 1, green: 0.7809510827, blue: 0.1670792401, alpha: 1)
         
-        let rightOverlay = UIView()
-        rightOverlay.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        let downOverlay = UIView()
+        downOverlay.backgroundColor = #colorLiteral(red: 0.7072762847, green: 0.8264989257, blue: 0.863738358, alpha: 1)
         
-        card.setOverlays([.left: leftOverlay, .right: rightOverlay])
+        card.setOverlays([.up: upOverlay, .down: downOverlay])
         
         return card
     }
@@ -81,13 +81,13 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     // Card swipe recognition
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
 
-        if direction == SwipeDirection.left {
+        if direction == SwipeDirection.up {
             // Send notification that card swiped
-            NotificationCenter.default.post(name: QuizzCardViewController.notificationDidSwipeLeft, object: nil, userInfo: ["index": index])
+            NotificationCenter.default.post(name: QuizzCardViewController.notificationDidSwipeUp, object: nil, userInfo: ["index": index])
             
-        } else if direction == SwipeDirection.right {
+        } else if direction == SwipeDirection.down {
             // Send notification that card swiped
-            NotificationCenter.default.post(name: QuizzCardViewController.notificationDidSwipeRight, object: nil, userInfo: ["index": index])
+            NotificationCenter.default.post(name: QuizzCardViewController.notificationDidSwipeDown, object: nil, userInfo: ["index": index])
         }
     }
     

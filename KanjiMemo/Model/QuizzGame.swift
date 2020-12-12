@@ -21,7 +21,7 @@ public class QuizzGame {
     // Random number to attribute wrong translation
     var randomWrongTranslation: Int!
     
-    // Random number to attribute position to correct translation (1:left, 2:Right)
+    // Random number to attribute position to correct translation (1:up, 2:down)
     var randomPositionArray: [Int] = []
     
     // Number of maximum cards in the quizz
@@ -60,7 +60,7 @@ public class QuizzGame {
             let englishTranslation =  CardCreator.cardCreator.listActivatedKAnji[index].meanings.joined(separator:", ")
             correctTranslationArray.append(englishTranslation)
         }
-        print("Correct : \(correctTranslationArray)")
+//        print("Correct : \(correctTranslationArray)")
     }
     
     // Method to generate wrong translation
@@ -74,7 +74,7 @@ public class QuizzGame {
             
             // If generated number is same as index, generate again until it is not
             while randomWrongTranslation == index {
-                print("same, need to regenerate")
+//                print("same, need to regenerate")
                 randomWrongTranslation = Int.random(in: 0...CardCreator.cardCreator.listActivatedKAnji.count-1)
             }
             
@@ -83,7 +83,7 @@ public class QuizzGame {
             
             wrongTranslationArray.append(englishWrongTranslation)
         }
-        print("Wrong : \(wrongTranslationArray)")
+//        print("Wrong : \(wrongTranslationArray)")
     }
     
     // Method to generate random number for correct translation
@@ -95,18 +95,18 @@ public class QuizzGame {
             let randomPositionForCard = Int.random(in: 1...2)
             randomPositionArray.append(randomPositionForCard)
         }
-        print(randomPositionArray)
+//        print(randomPositionArray)
     }
     
     // Method to check is correct translation is chosen
     func checkIfCorrectTranslation(index: Int, position: Int){
         if randomPositionArray[index] == position {
-            print("Correct")
+//            print("Correct")
             score += 1
             Stats.stats.countKanji(index: index)
             Stats.stats.countCorrectAnswer(index: index)
         } else {
-            print("Wrong!!")
+//            print("Wrong!!")
             Stats.stats.countKanji(index: index)
         }
     }

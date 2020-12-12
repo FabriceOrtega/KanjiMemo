@@ -18,10 +18,10 @@ public class CardCreator {
     
     // Determine the card size
     var cardWidth: CGFloat {
-        return UIScreen.main.bounds.width - 40
+        return UIScreen.main.bounds.width
     }
     var cardHeight: CGFloat {
-        return UIScreen.main.bounds.height - 320
+        return (UIScreen.main.bounds.height)/3
     }
     
     // List of activated kanji for the quizz
@@ -35,12 +35,14 @@ public class CardCreator {
         let frame = CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight)
         let kanjiLabel = UILabel(frame: frame)
         kanjiLabel.textAlignment = .center
-        kanjiLabel.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        kanjiLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        kanjiLabel.font = UIFont.boldSystemFont(ofSize: 200)
+        kanjiLabel.backgroundColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
+        kanjiLabel.textColor = #colorLiteral(red: 0.1694765389, green: 0.1284059286, blue: 0.3706680536, alpha: 1)
+        kanjiLabel.font = UIFont.init(name: "Galvji-Bold", size: 200)
         kanjiLabel.text = kanji
         kanjiLabel.clipsToBounds = true
-        kanjiLabel.layer.cornerRadius = 10
+        kanjiLabel.layer.cornerRadius = 0
+        kanjiLabel.layer.borderWidth = 2
+        kanjiLabel.layer.borderColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
         UIGraphicsBeginImageContext(frame.size)
         if let currentContext = UIGraphicsGetCurrentContext() {
             kanjiLabel.layer.render(in: currentContext)

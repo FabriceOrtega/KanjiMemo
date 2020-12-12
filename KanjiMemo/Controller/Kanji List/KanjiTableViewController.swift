@@ -58,9 +58,6 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     //MARK: View did load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Kanji"
-        
         // Call the decode methed
         decoder.decodeKanjiJson{[weak self] result in
             // Switch pour succes ou failure
@@ -78,12 +75,19 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search English translation"
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
             kanjiTableView.tableHeaderView = searchController.searchBar
         }
         definesPresentationContext = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Change text color in search bar
+        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
     }
 
     
@@ -282,5 +286,3 @@ extension KanjiTableViewController: UISearchResultsUpdating {
         filterContentForSearchText(searchBar.text!)
     }
 }
-
-

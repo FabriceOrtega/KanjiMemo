@@ -60,5 +60,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AdobeFanHeitiStd-Bold.otf</string>
+		<string>hiragino-kaku-gothic-std-w8.otf</string>
+	</array>
 </dict>
 </plist>
