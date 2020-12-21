@@ -69,7 +69,7 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     //MARK: Draw percentage circle with percentage label
-    func drawCircle(percentage: Int, cell: StatsTableViewCell?){
+    private func drawCircle(percentage: Int, cell: StatsTableViewCell?){
         // Calculate the circle radius
         var circleRadius: CGFloat {
             return (cell?.frame.height)!/2 + 10

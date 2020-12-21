@@ -65,5 +65,7 @@
 		<string>AdobeFanHeitiStd-Bold.otf</string>
 		<string>hiragino-kaku-gothic-std-w8.otf</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>KanjiMemo saved the picture in Library</string>
 </dict>
 </plist>

@@ -65,7 +65,7 @@ class StatsViewController: UIViewController {
     }
     
     // Method to create and animate the good answer percentage circle
-    func setCorrectAnswersPercentageCircle(){
+    private func setCorrectAnswersPercentageCircle(){
         // If no good answer stored, percentage is zero
         if Stats.stats.numberTotalGoodAnswer > 0 {
             // Draw circle
@@ -80,7 +80,7 @@ class StatsViewController: UIViewController {
     }
     
     // Method to create and animate the kanji used percentage circle
-    func setKanjiUsedPercentageCircle(){
+    private func setKanjiUsedPercentageCircle(){
         // If no kanji used, percentage is zero
         if Stats.stats.numberOfKanjiFromQuizz > 0 {
             // Draw circle
@@ -95,7 +95,7 @@ class StatsViewController: UIViewController {
     }
     
     // Method to attribute the labels
-    func setLabels() {
+    private func setLabels() {
         // Set label of number kanji used
         numberKanjiUsed.text = String(Stats.stats.numberOfKanjiFromQuizz)
         

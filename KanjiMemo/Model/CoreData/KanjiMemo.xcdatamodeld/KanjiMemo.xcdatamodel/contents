@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AlarmEntity" representedClassName=".AlarmEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="fridayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="hour" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minutes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mondayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="saturdayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="sundayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="thursdayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="tuesdayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="wednesdayNotification" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <entity name="KanjiEntity" representedClassName=".KanjiEntity" syncable="YES" codeGenerationType="category">
         <attribute name="grade" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="heisig_en" optional="YES" attributeType="String"/>
@@ -20,5 +31,6 @@
     <elements>
         <element name="KanjiEntity" positionX="-63" positionY="-18" width="128" height="179"/>
         <element name="StatsEntity" positionX="-63" positionY="54" width="128" height="74"/>
+        <element name="AlarmEntity" positionX="-63" positionY="54" width="128" height="164"/>
     </elements>
 </model>

@@ -166,7 +166,7 @@ public class Stats{
     
     // Method to charge data from database
     private func fillCountKanjiQuizz() {
-        print("StatsEntity.all.count = ")
+//        print("StatsEntity.all.count = ")
         for i in StatsEntity.all {
             if i.kanji != nil {
 //                print(i.kanji!)
@@ -179,7 +179,7 @@ public class Stats{
     
     // Method to charge data from database
     private func fillCountKanjiCorrect() {
-        print("StatsEntity.all.count = ")
+//        print("StatsEntity.all.count = ")
         for i in StatsEntity.all {
             if i.kanji != nil {
 //                print(i.kanji!)

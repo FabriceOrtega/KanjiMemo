@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,16 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-5O-t5F">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-5O-t5F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="KanjiLogo" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-Y6-zcy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kanji" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-Y6-zcy">
                                 <rect key="frame" x="25" y="243.66666666666663" width="325" height="325"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HmN-Y6-zcy" secondAttribute="height" multiplier="1:1" id="Is2-yy-iLd"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="KanjiMemoText" translatesAutoresizingMaskIntoConstraints="NO" id="p0r-8O-rpD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kanjiMemo" translatesAutoresizingMaskIntoConstraints="NO" id="p0r-8O-rpD">
                                 <rect key="frame" x="25" y="243.66666666666663" width="325" height="325"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="p0r-8O-rpD" secondAttribute="height" multiplier="1:1" id="AFI-aO-eDt"/>
@@ -55,9 +55,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="1024" height="1024"/>
-        <image name="KanjiLogo" width="1024" height="1024"/>
-        <image name="KanjiMemoText" width="1024" height="1024"/>
+        <image name="background" width="340" height="340"/>
+        <image name="kanji" width="340" height="340"/>
+        <image name="kanjiMemo" width="340" height="340"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

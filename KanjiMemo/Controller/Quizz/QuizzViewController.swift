@@ -24,8 +24,11 @@ class QuizzViewController: UIViewController {
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var wrongImageView: UIImageView!
     
-    // Parameter for to show the path to the QuizzCardViewController
+    // Parameter to show the path to the QuizzCardViewController
     var quizzCardVC: QuizzCardViewController!
+    
+    // Parameter to show the path to the ShareVC
+    var shareVC: ShareViewController!
     
     // View did load
     override func viewDidLoad() {
@@ -49,15 +52,26 @@ class QuizzViewController: UIViewController {
         if segue.identifier == "toQuizzCard" {
             DispatchQueue.main.async{
                 self.quizzCardVC = segue.destination as? QuizzCardViewController
-                self.attributeParamatersForSegue()
+                self.attributeParamatersForSegueToQuizzCardVC()
+            }
+        } else if segue.identifier == "toShareView" {
+            DispatchQueue.main.async{
+                self.shareVC = segue.destination as? ShareViewController
+                self.attributeParamatersForSegueToShareVC()
             }
         }
     }
     
     // Method to attribute the parameters to quizzcard
-    func attributeParamatersForSegue(){
+    private func attributeParamatersForSegueToQuizzCardVC(){
         //Placeholder to pass the parameters here
     }
+    
+    // Method to attribute the parameters to quizzcard
+    private func attributeParamatersForSegueToShareVC(){
+        //Placeholder to pass the parameters here
+    }
+    
     
 
     // Start quizz button
@@ -89,7 +103,7 @@ class QuizzViewController: UIViewController {
     }
     
     
-    func setUpText(index: Int){
+    private func setUpText(index: Int){
         
         if index < QuizzGame.quizzGame.numberCards {
             if QuizzGame.quizzGame.randomPositionArray[index] == 1 {
@@ -138,7 +152,7 @@ class QuizzViewController: UIViewController {
     }
     
     // Method to set the score label
-    func setScoreLabel(){
+    private func setScoreLabel(){
         if QuizzGame.quizzGame.score > 9 {
             scoreLabel.text = String(QuizzGame.quizzGame.score)
         } else {
@@ -151,20 +165,29 @@ class QuizzViewController: UIViewController {
             numberOfCardsLabel.text = "0" + String(QuizzGame.quizzGame.numberCards)
         }
         
+        // 
+        if !QuizzGame.quizzGame.quizzIsOn {
+            performSegue(withIdentifier: "toShareView", sender: self)
+        }
+        
     }
     
     // Method to animate the score text label
-    func animateScoreLabel(index: Int, position: Int){
+    private func animateScoreLabel(index: Int, position: Int){
         // Check if question has been correctly answered
         if QuizzGame.quizzGame.randomPositionArray[index] == position {
             // Scale briefly the label and show the right image
-            UIView.animate(withDuration: 2) {
+            UIView.animate(withDuration: 0.5) {
                 self.scoreLabel.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
+            }
+            UIView.animate(withDuration: 0.5) {
+                self.scoreLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }
+            UIView.animate(withDuration: 2) {
                 self.rightImageView.isHidden = false
                 self.rightImageView.alpha = 1.0
             }
             UIView.animate(withDuration: 2) {
-                self.scoreLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.rightImageView.alpha = 0.0
             }
         } else {
@@ -180,7 +203,7 @@ class QuizzViewController: UIViewController {
     }
     
     // Method to call an alert
-    func alert(title: String, message: String) {
+    private func alert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return self.present(alertVC, animated: true, completion: nil)

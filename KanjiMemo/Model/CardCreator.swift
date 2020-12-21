@@ -37,7 +37,7 @@ public class CardCreator {
         kanjiLabel.textAlignment = .center
         kanjiLabel.backgroundColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
         kanjiLabel.textColor = #colorLiteral(red: 0.1694765389, green: 0.1284059286, blue: 0.3706680536, alpha: 1)
-        kanjiLabel.font = UIFont.init(name: "Galvji-Bold", size: 200)
+        kanjiLabel.font = UIFont.init(name: "Arial Bold", size: 200)
         kanjiLabel.text = kanji
         kanjiLabel.clipsToBounds = true
         kanjiLabel.layer.cornerRadius = 0

@@ -24,8 +24,10 @@
 		1C369E202560861700BA1A7D /* KanjiJsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */; };
 		1C49AAC8257A714E009FC7CD /* PercentageCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C49AAC7257A714E009FC7CD /* PercentageCircle.swift */; };
 		1C61A00C256FF412000185BA /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61A00B256FF412000185BA /* Stats.swift */; };
+		1C6A63D82587CCE50038A41C /* AlarmEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6A63D72587CCE50038A41C /* AlarmEntity.swift */; };
 		1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C793D782566DFF2003980F5 /* QuizzGame.swift */; };
 		1C7BA2EF2573A19100EB3612 /* StatsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */; };
+		1C7CA78D258E833600920BEC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7CA78C258E833600920BEC /* ShareViewController.swift */; };
 		1C8116A72570F28B00C2004B /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116A62570F28B00C2004B /* StatsViewController.swift */; };
 		1C8116AA2570F8D100C2004B /* StatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116A92570F8D100C2004B /* StatsTableViewController.swift */; };
 		1C8116AD2570F8E700C2004B /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */; };
@@ -38,6 +40,8 @@
 		1C97218E2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C97218C2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf */; };
 		1C97218F2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C97218D2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf */; };
 		1CA9D66C256BF729003F0BBE /* KanjiMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */; };
+		1CBC04AC2587629100C58F28 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC04AB2587629100C58F28 /* Alarm.swift */; };
+		1CBC04B0258768CA00C58F28 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBC04AF258768CA00C58F28 /* AlarmViewController.swift */; };
 		1CBE109525727E260070E329 /* KanjiEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBE109425727E260070E329 /* KanjiEntity.swift */; };
 		1CF2E1F0257941C100001F55 /* StatsTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF2E1EF257941C100001F55 /* StatsTestCase.swift */; };
 		217F61EB6D4DF70920041883 /* Pods_KanjiMemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE60BBF541E8054010C4C6EC /* Pods_KanjiMemo.framework */; };
@@ -75,8 +79,10 @@
 		1C369E1F2560861700BA1A7D /* KanjiJsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiJsonDecoder.swift; sourceTree = "<group>"; };
 		1C49AAC7257A714E009FC7CD /* PercentageCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageCircle.swift; sourceTree = "<group>"; };
 		1C61A00B256FF412000185BA /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		1C6A63D72587CCE50038A41C /* AlarmEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEntity.swift; sourceTree = "<group>"; };
 		1C793D782566DFF2003980F5 /* QuizzGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzGame.swift; sourceTree = "<group>"; };
 		1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsEntity.swift; sourceTree = "<group>"; };
+		1C7CA78C258E833600920BEC /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		1C8116A62570F28B00C2004B /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		1C8116A92570F8D100C2004B /* StatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewController.swift; sourceTree = "<group>"; };
 		1C8116AC2570F8E700C2004B /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 		1C97218C2583794B00F9C163 /* AdobeFanHeitiStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AdobeFanHeitiStd-Bold.otf"; sourceTree = "<group>"; };
 		1C97218D2583794B00F9C163 /* hiragino-kaku-gothic-std-w8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hiragino-kaku-gothic-std-w8.otf"; sourceTree = "<group>"; };
 		1CA9D66B256BF729003F0BBE /* KanjiMemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KanjiMemo.xcdatamodel; sourceTree = "<group>"; };
+		1CBC04AB2587629100C58F28 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		1CBC04AF258768CA00C58F28 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		1CBE109425727E260070E329 /* KanjiEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanjiEntity.swift; sourceTree = "<group>"; };
 		1CF2E1EF257941C100001F55 /* StatsTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTestCase.swift; sourceTree = "<group>"; };
 		9A7FD7AAFC40D3FEEB6C19DC /* Pods-KanjiMemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KanjiMemo.debug.xcconfig"; path = "Target Support Files/Pods-KanjiMemo/Pods-KanjiMemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +193,7 @@
 				1C793D782566DFF2003980F5 /* QuizzGame.swift */,
 				1C61A00B256FF412000185BA /* Stats.swift */,
 				1C49AAC7257A714E009FC7CD /* PercentageCircle.swift */,
+				1CBC04AB2587629100C58F28 /* Alarm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +223,7 @@
 				1CA9D66A256BF729003F0BBE /* KanjiMemo.xcdatamodeld */,
 				1CBE109425727E260070E329 /* KanjiEntity.swift */,
 				1C7BA2EE2573A19100EB3612 /* StatsEntity.swift */,
+				1C6A63D72587CCE50038A41C /* AlarmEntity.swift */,
 				1C8C0E242574079200F1C8C4 /* KanjiSaveManagement.swift */,
 			);
 			path = CoreData;
@@ -234,6 +244,7 @@
 			children = (
 				1C940BFC25666AC80040FBB8 /* QuizzCardViewController.swift */,
 				1C940BF6256665120040FBB8 /* QuizzViewController.swift */,
+				1C7CA78C258E833600920BEC /* ShareViewController.swift */,
 			);
 			path = Quizz;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 		1C9E541B256FAC51006DC883 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				1CBC04AF258768CA00C58F28 /* AlarmViewController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -328,7 +340,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					1C10FDFE2578EC8B004C8481 = {
 						CreatedOnToolsVersion = 12.2;
@@ -443,11 +455,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CBC04B0258768CA00C58F28 /* AlarmViewController.swift in Sources */,
 				1C940C07256673520040FBB8 /* CardCreator.swift in Sources */,
 				1C61A00C256FF412000185BA /* Stats.swift in Sources */,
 				1C933655256118C200A6AE1C /* KanjiTableViewController.swift in Sources */,
 				1C369DFB256076C300BA1A7D /* AppDelegate.swift in Sources */,
 				1C8116AA2570F8D100C2004B /* StatsTableViewController.swift in Sources */,
+				1C7CA78D258E833600920BEC /* ShareViewController.swift in Sources */,
+				1CBC04AC2587629100C58F28 /* Alarm.swift in Sources */,
 				1C49AAC8257A714E009FC7CD /* PercentageCircle.swift in Sources */,
 				1C8116AD2570F8E700C2004B /* StatsTableViewCell.swift in Sources */,
 				1C8116A72570F28B00C2004B /* StatsViewController.swift in Sources */,
@@ -459,6 +474,7 @@
 				1C1868BC2561627300A09B82 /* KanjiDetailViewController.swift in Sources */,
 				1C7BA2EF2573A19100EB3612 /* StatsEntity.swift in Sources */,
 				1C793D792566DFF2003980F5 /* QuizzGame.swift in Sources */,
+				1C6A63D82587CCE50038A41C /* AlarmEntity.swift in Sources */,
 				1CBE109525727E260070E329 /* KanjiEntity.swift in Sources */,
 				1C369DFD256076C300BA1A7D /* SceneDelegate.swift in Sources */,
 				1C940BF7256665120040FBB8 /* QuizzViewController.swift in Sources */,

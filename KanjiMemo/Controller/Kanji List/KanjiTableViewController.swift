@@ -59,6 +59,25 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Call the decode methed
+        decode()
+        
+        //Search bar
+        setSearchBar()
+        
+        // Activate the alarm
+        Alarm.alarm.chargeAlarmParameters()
+        Alarm.alarm.setAllAlarms()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Change text color in search bar
+        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
+    }
+    
+    //MARK: Decode the json
+    func decode(){
+        // Call the decode method
         decoder.decodeKanjiJson{[weak self] result in
             // Switch pour succes ou failure
             switch result {
@@ -70,26 +89,8 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             //print(kanji)
             }
         }
-        
-        //Search bar
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search English translation"
-        searchController.searchBar.tintColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        } else {
-            kanjiTableView.tableHeaderView = searchController.searchBar
-        }
-        definesPresentationContext = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // Change text color in search bar
-        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInsideSearchBar?.textColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
-    }
-
     
     // MARK: Filtering method
     func filterContentForSearchText(_ searchText: String,
@@ -106,6 +107,20 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         kanjiTableView.reloadData()
+    }
+    
+    // Method to create the search bar
+    func setSearchBar(){
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search English translation"
+        searchController.searchBar.tintColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            kanjiTableView.tableHeaderView = searchController.searchBar
+        }
+        definesPresentationContext = true
     }
     
     // Button to show only selected Kanji

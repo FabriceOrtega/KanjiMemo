@@ -33,6 +33,7 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(cardStack)
+        view.bringSubviewToFront(cardStack)
         
         createCardStack()
         
@@ -44,7 +45,7 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     }
     
     // Swipe card method
-    func card(fromImage image: UIImage) -> SwipeCard {
+    private func card(fromImage image: UIImage) -> SwipeCard {
         // Instanciate the card
         let card = SwipeCard()
         // Accepted direction
@@ -74,7 +75,7 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     }
     
     // Calling the build method from activated kanji list
-    func createCardStack(){
+    private func createCardStack(){
         cardImages = CardCreator.cardCreator.cardImages
     }
     
