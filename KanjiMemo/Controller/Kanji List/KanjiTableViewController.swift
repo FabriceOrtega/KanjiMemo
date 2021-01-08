@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     // Outlet of the table view
     @IBOutlet weak var kanjiTableView: UITableView!
@@ -34,19 +34,20 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     var decoder = KanjiJsonDecoder(session: URLSession(configuration: .default))
     
     // Search bar
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchBar = UISearchBar()
     
     // List of kanji filtered by the search bar
     var filteredKanji: [Kanji] = []
     
     // Search bar is empty
     var isSearchBarEmpty: Bool {
-        return searchController.searchBar.text?.isEmpty ?? true
+        return searchBar.text?.isEmpty ?? true
     }
     
     // Search is filetring
     var isFiltering: Bool {
-        return searchController.isActive && !isSearchBarEmpty
+//        return searchController.isActive && !isSearchBarEmpty
+        return !isSearchBarEmpty
     }
     
     // Boolean to see if button od selected kanji display is active or not
@@ -63,15 +64,19 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //Search bar
         setSearchBar()
+        searchBar.delegate = self
         
         // Activate the alarm
         Alarm.alarm.chargeAlarmParameters()
         Alarm.alarm.setAllAlarms()
+        
+        //Dismiss the keyboard
+        kanjiTableView.keyboardDismissMode = .onDrag
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // Change text color in search bar
-        let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
     }
     
@@ -93,8 +98,25 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     // MARK: Filtering method
-    func filterContentForSearchText(_ searchText: String,
-                                    category: Kanji? = nil) {
+    // Method to create the search bar
+    func setSearchBar(){
+        // Set its delegate to self
+        searchBar.delegate = self
+        
+        // Position it in the navigation bar
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+        
+        // Change attributes
+        searchBar.placeholder = "Search English translation"
+        searchBar.tintColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
+        
+    }
+    
+    // Search bar methods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // Show cancel button only starting to type
+        searchBar.showsCancelButton = true
         
         // Create list of filtered kanji
         filteredKanji = listKanji.filter { (kanji: Kanji) -> Bool in
@@ -109,19 +131,26 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         kanjiTableView.reloadData()
     }
     
-    // Method to create the search bar
-    func setSearchBar(){
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search English translation"
-        searchController.searchBar.tintColor = #colorLiteral(red: 0.9386852384, green: 0.905385077, blue: 0.8662842512, alpha: 1)
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        } else {
-            kanjiTableView.tableHeaderView = searchController.searchBar
-        }
-        definesPresentationContext = true
+    // Cancel button on search bar
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // Clear the text in the search bar
+        searchBar.text = ""
+        
+        // Hide the cancel button
+        searchBar.showsCancelButton = false
+        
+        // Dismiss the keyboard
+        searchBar.endEditing(true)
+        
+        // realod tableview
+        kanjiTableView.reloadData()
     }
+    
+    // Search button from the search bar to dismiss the key board
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
     
     // Button to show only selected Kanji
     @IBAction func displayOnlySelectedKanji(_ sender: Any) {
@@ -286,6 +315,10 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+}
+
+// Extension for the alert method
+extension UIViewController {
     // Method to call an alert
     func alert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -294,10 +327,3 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 }
 
-// MARK: Extension for search bar
-extension KanjiTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        filterContentForSearchText(searchBar.text!)
-    }
-}

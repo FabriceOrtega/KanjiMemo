@@ -201,12 +201,5 @@ class QuizzViewController: UIViewController {
             }
         }
     }
-    
-    // Method to call an alert
-    private func alert(title: String, message: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        return self.present(alertVC, animated: true, completion: nil)
-    }
 
 }

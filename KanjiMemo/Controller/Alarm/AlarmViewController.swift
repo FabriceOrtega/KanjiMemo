@@ -110,7 +110,7 @@ class AlarmViewController: UIViewController {
     
     @IBAction func saturdayButton(_ sender: Any) {
         if Alarm.alarm.notificationSaturday {
-            Alarm.alarm.notificationMonday = false
+            Alarm.alarm.notificationSaturday = false
         } else {
             Alarm.alarm.notificationSaturday = true
         }
