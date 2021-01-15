@@ -16,19 +16,25 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // Outlet to display the number of kanji
     @IBOutlet weak var numberOfKanji: UILabel!
     
+    // Outlet for the button to show only selected Kanji
+    @IBOutlet weak var showSelectedKanjiButtonOutlet: UIButton!
+    
     // Kanji list to be reloaded outside the main queue
     var listKanji = [Kanji]() {
         didSet {
             DispatchQueue.main.async {
+                // Reload table view when object is uplaoded
                 self.kanjiTableView.reloadData()
+                // Load activated Kanji from CoreData
                 self.fillKanjiActivatedList()
+                // Duplicate this list to have access ti the details from the Stat Table View
                 Stats.stats.listOfAllKanji = self.listKanji
             }
         }
     }
     
     // To pass data to the detailled view
-    var kanjiDetailData: Kanji!
+    var kanjiDetailData: Kanji?
     
     //Instance of json decoder
     var decoder = KanjiJsonDecoder(session: URLSession(configuration: .default))
@@ -46,11 +52,10 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // Search is filetring
     var isFiltering: Bool {
-//        return searchController.isActive && !isSearchBarEmpty
         return !isSearchBarEmpty
     }
     
-    // Boolean to see if button od selected kanji display is active or not
+    // Boolean to see if button of selected kanji display is active or not
     var displaySelectedKanji = false
     
     // Parameter used to attribute filteredKanji array or listActivatedKAnji
@@ -159,14 +164,25 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             numberOfKanji.text = "No Kanji selected"
         }
         
-        if displaySelectedKanji == false {
+        if !displaySelectedKanji {
             displaySelectedKanji = true
+            changeColorOfShowSelectedButton()
         } else {
             displaySelectedKanji = false
+            changeColorOfShowSelectedButton()
         }
         
         kanjiTableView.reloadData()
         
+    }
+    
+    // Method to show 
+    func changeColorOfShowSelectedButton(){
+        if showSelectedKanjiButtonOutlet.tintColor == #colorLiteral(red: 0.276517272, green: 0.2243287563, blue: 0.4410637617, alpha: 1) {
+            showSelectedKanjiButtonOutlet.tintColor = #colorLiteral(red: 0.639534235, green: 0.7437759042, blue: 0.7769008875, alpha: 1)
+        } else {
+            showSelectedKanjiButtonOutlet.tintColor = #colorLiteral(red: 0.276517272, green: 0.2243287563, blue: 0.4410637617, alpha: 1)
+        }
     }
     
     
@@ -210,32 +226,35 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "KanjiCell", for: indexPath) as? KanjiTableViewCell
         
-        // Call method to take kani from filetred list if filter is active
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "KanjiCell", for: indexPath) as? KanjiTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        // Call method to take kanji from filetred list if filter is active
         attributeKanjiFromCorrectList(row: indexPath.row)
         
         // Compare list of activated kanji with actual kanji to activate switch for reusable cell
         if CardCreator.cardCreator.listActivatedKAnji.contains(kanjiFromThisCell) {
-            cell?.kanjiSwitch.isOn = true
+            cell.kanjiSwitch.isOn = true
         }
         
         // Attribute Kanji
-        cell?.kanjiLabel.text = kanjiFromThisCell.kanji
+        cell.kanjiLabel.text = kanjiFromThisCell.kanji
         
         // Attribute the english translation
         let meaningsString = kanjiFromThisCell.meanings.joined(separator:", ")
-        cell?.englishLabel.text = meaningsString
+        cell.englishLabel.text = meaningsString
         
         // Attribute the pronouciation in hiragana/katakana
         let kanaString = kanjiFromThisCell.kun_readings.joined(separator:", ")
-        cell?.kanaLabel.text = kanaString
+        cell.kanaLabel.text = kanaString
         
         // Switch
-        cell?.kanjiSwitch.tag = indexPath.row
-        cell?.kanjiSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
+        cell.kanjiSwitch.tag = indexPath.row
+        cell.kanjiSwitch.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         
-        return cell!
+        return cell
     }
     
     

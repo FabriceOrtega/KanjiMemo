@@ -172,4 +172,36 @@ class StatsTestCase: XCTestCase {
         XCTAssert(Stats.stats.countKanjiCorrect["雨"] == 1)
     }
     
+    // Check the total count of appearance
+    func testGivenAppearanceArrayIsTwoForThreeDifferentKanjiThenTotalAppearanceShouldBeSix(){
+        
+        //Initlize the the counting library
+        Stats.stats.countKanjiQuizz = ["一":2, "右":2, "雨":2]
+       
+        // Check if total is 6
+        XCTAssert(Stats.stats.numberTotalCardSwipped == 6)
+    }
+    
+    // Check the total count of correct
+    func testGivenCorrectArrayIsTwoForThreeDifferentKanjiThenTotalCorrectShouldBeSix(){
+        
+        //Initlize the the counting library
+        Stats.stats.countKanjiCorrect = ["一":2, "右":2, "雨":2]
+       
+        // Check if total is 6
+        XCTAssert(Stats.stats.numberTotalGoodAnswer == 6)
+    }
+    
+    // Check the total percentage of correct answer
+    func testGivenCorrectArrayIsOneAndAppearanceArrayIsTwoWhenCheckingPercentageThenPercentageShouldBeFiftyPercent(){
+        
+        //Initlize the the counting library
+        Stats.stats.countKanjiQuizz = ["一":2, "右":2, "雨":2]
+        //Initlize the the counting library
+        Stats.stats.countKanjiCorrect = ["一":1, "右":1, "雨":1]
+       
+        // Check if percentage is 50
+        XCTAssert(Stats.stats.percentageGoodAnswer == 50)
+    }
+    
 }

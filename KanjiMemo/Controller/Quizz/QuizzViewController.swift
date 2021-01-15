@@ -25,10 +25,10 @@ class QuizzViewController: UIViewController {
     @IBOutlet weak var wrongImageView: UIImageView!
     
     // Parameter to show the path to the QuizzCardViewController
-    var quizzCardVC: QuizzCardViewController!
+    var quizzCardVC: QuizzCardViewController?
     
     // Parameter to show the path to the ShareVC
-    var shareVC: ShareViewController!
+    var shareVC: ShareViewController?
     
     // View did load
     override func viewDidLoad() {
@@ -95,7 +95,10 @@ class QuizzViewController: UIViewController {
             setScoreLabel()
             
             // Call the QuizzCardVC view did laod to display the cards
-            self.quizzCardVC.viewDidLoad()
+            guard let quizzCardVC = self.quizzCardVC else {
+                return
+            }
+            quizzCardVC.viewDidLoad()
             
         } else {
             alert(title: "Error", message: "Please select at least two Kanji to start the quizz !")

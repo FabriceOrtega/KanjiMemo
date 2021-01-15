@@ -31,7 +31,7 @@ public class CardCreator {
     public init() {}
     
     //Method to create cards as UIImageView
-    private func imageWith(kanji: String?) -> UIImage? {
+    private func imageWith(kanji: String) -> UIImage? {
         let frame = CGRect(x: 0, y: 0, width: cardWidth, height: cardHeight)
         let kanjiLabel = UILabel(frame: frame)
         kanjiLabel.textAlignment = .center
@@ -54,7 +54,6 @@ public class CardCreator {
     
     // Method to create images from kanji activated list
     public func createKanjiImages() {
-//        print(listActivatedKAnji.count)
         
         // Randomize the array
         listActivatedKAnji.shuffle()
@@ -65,14 +64,18 @@ public class CardCreator {
         // At least two kanji must be selected
         if listActivatedKAnji.count > 1 {
             
-            // Loop in the array, and create a UIImage per kanji and it to the list with the max card limit
+            // Loop in the array, and create a UIImage per kanji and add it to the list with the max card limit
             if listActivatedKAnji.count > QuizzGame.quizzGame.maxCardQuizz {
                 for i in 0...((QuizzGame.quizzGame.maxCardQuizz) - 1){
-                    cardImages.append(imageWith(kanji: listActivatedKAnji[i].kanji))
+                    if let image = imageWith(kanji: listActivatedKAnji[i].kanji) {
+                        cardImages.append(image)
+                    }
                 }
             } else {
                 for i in 0...((listActivatedKAnji.count) - 1){
-                    cardImages.append(imageWith(kanji: listActivatedKAnji[i].kanji))
+                    if let image = imageWith(kanji: listActivatedKAnji[i].kanji) {
+                        cardImages.append(image)
+                    }
                 }
             }
         }

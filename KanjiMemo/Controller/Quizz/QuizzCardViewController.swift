@@ -66,7 +66,8 @@ class QuizzCardViewController: UIViewController, SwipeCardStackDataSource, Swipe
     
     // Stack creation method
     func cardStack(_ cardStack: SwipeCardStack, cardForIndexAt index: Int) -> SwipeCard {
-        return card(fromImage: cardImages[index]!)
+        guard let cardToReturn = cardImages[index] else {return SwipeCard()}
+        return card(fromImage: cardToReturn)
     }
     
     // Stack count method

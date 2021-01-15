@@ -43,8 +43,9 @@ class AlarmViewController: UIViewController {
 
         let date = sender.date
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-        Alarm.alarm.hour = components.hour!
-        Alarm.alarm.minutes = components.minute!
+        guard let hour = components.hour, let minutes = components.minute else {return}
+        Alarm.alarm.hour = hour
+        Alarm.alarm.minutes = minutes
     }
     
     // Actions for the day buttons

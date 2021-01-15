@@ -10,7 +10,7 @@ import UIKit
 class KanjiDetailViewController: UIViewController {
     
     // To get data from the TableViewController
-    var kanjiDetailData: Kanji!
+    var kanjiDetailData: Kanji?
     
     // Labels
     @IBOutlet weak var kanjiLabel: UILabel!
@@ -30,14 +30,14 @@ class KanjiDetailViewController: UIViewController {
     
     // Method to attribute the labels to the data passed thru the segway
     func attributeLables(){
-        kanjiLabel.text = kanjiDetailData.kanji
-        gradeLabel.text = "0" + String(kanjiDetailData.grade)
+        kanjiLabel.text = kanjiDetailData?.kanji
+        gradeLabel.text = "0" + String(kanjiDetailData?.grade ?? 1)
         
         //Build strings from array
-        let englishString = kanjiDetailData.meanings.joined(separator:", ")
-        let kunString = kanjiDetailData.kun_readings.joined(separator:", ")
-        let onString = kanjiDetailData.on_readings.joined(separator:", ")
-        let nameString = kanjiDetailData.name_readings.joined(separator:", ")
+        let englishString = kanjiDetailData?.meanings.joined(separator:", ")
+        let kunString = kanjiDetailData?.kun_readings.joined(separator:", ")
+        let onString = kanjiDetailData?.on_readings.joined(separator:", ")
+        let nameString = kanjiDetailData?.name_readings.joined(separator:", ")
         
         //Attributes labels to strings
         englishLabel.text = englishString
