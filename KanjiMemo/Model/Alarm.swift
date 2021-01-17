@@ -23,7 +23,7 @@ class Alarm: NSObject, UNUserNotificationCenterDelegate {
     var notificationSaturday = false
     
     // Time for the notification
-    var hour = 00
+    var hour = 12
     var minutes = 00
     
     // Notificationcenter

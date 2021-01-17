@@ -42,8 +42,9 @@ class ShareViewController: UIViewController {
         // Create collage picture
         let size = viewToShare.frame.size
         UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext(), let currentContext = UIGraphicsGetCurrentContext() else {return}
-        viewToShare.layer.render(in: currentContext)
+        guard let context = UIGraphicsGetCurrentContext() else {return}
+        viewToShare.layer.render(in: context)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else {return}
         
         UIGraphicsEndImageContext()
         
