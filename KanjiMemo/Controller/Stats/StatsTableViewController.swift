@@ -32,8 +32,8 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return Stats.stats.numberOfKanjiFromQuizz
+        // return the number of rows
+        return kanjiStatArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
