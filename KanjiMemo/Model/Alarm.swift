@@ -88,7 +88,7 @@ class Alarm: NSObject, UNUserNotificationCenterDelegate {
     }
     
     // MARK: Database methods
-    // Method to add an kanji in the database
+    // Method to save alarm parameters in the database
     func saveAlarmParameters() {
         // Save the object in the context
         let alarmParameters = AlarmEntity(context: AppDelegate.viewContext)
