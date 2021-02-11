@@ -58,6 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     // Handle the notifications
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Increase the time of the launch screen
+        do {
+                sleep(3)
+            }
+        
         // Override point for customization after application launch.
         let center = UNUserNotificationCenter.current()
             center.delegate = self // Don't forgot to set delegate

@@ -14,9 +14,6 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // Extract the keys of the dictionary to create an array of Kanji
     var kanjiStatArray = Array(Stats.stats.countKanjiQuizz.keys)
     
-    // Circle for percentage
-    var roundView: UIView!
-    
     // To pass data to the detailled view
     var kanjiDetailData: Kanji?
     
@@ -51,7 +48,7 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
         if let statCorrect = Stats.stats.countKanjiCorrect[kanjiCurrentKey] {
             // Calculate the percentage
-            let percentageKanjiCell = Int(100 * Double(statCorrect) / Double(Stats.stats.countKanjiQuizz[kanjiCurrentKey] ?? 1))
+            let percentageKanjiCell = Int(100 * Double(statCorrect) / Double(Stats.stats.countKanjiQuizz[kanjiCurrentKey] ?? 0))
 
             // Set the correct answers if more than 1
             cell.correctLabel.text = "Correct : \(statCorrect)"
@@ -60,40 +57,18 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.percentageLabel.text = String(percentageKanjiCell) + " %"
 
             // Draw the circle with the percentage in it
-            drawCircle(percentage: percentageKanjiCell, cell: cell)
+            //drawCircle(percentage: percentageKanjiCell, cell: cell)
+            cell.percentage = percentageKanjiCell
         } else {
             // Set the correct answers to 0 and draw the circle at 0%
             cell.correctLabel.text = "Correct : 0"
-            drawCircle(percentage: 0, cell: cell)
+            cell.percentage = 0
         }
         
         
         return cell
     }
     
-    //MARK: Draw percentage circle with percentage label
-    private func drawCircle(percentage: Int, cell: StatsTableViewCell){
-        // Calculate the circle radius
-        var circleRadius: CGFloat {
-            return cell.frame.height/2 + 10
-        }
-        
-        // Calculate the x position of the percentage circle
-        var circleXPosition: CGFloat {
-            return cell.frame.width - (circleRadius) - 10
-        }
-        
-        // Calculate the y position of the percentage circle
-        var circleYPosition: CGFloat {
-            return cell.frame.height/2 - (circleRadius/2)
-        }
-        
-        // Call method from PercentageCircle class
-
-        roundView = PercentageCircle.percentageCircle.createPercentageCircle(percentage: percentage, circleRadius: circleRadius, circleXPosition: circleXPosition, circleYPosition: circleYPosition, circleWidth: 5, circleColor: #colorLiteral(red: 0.276517272, green: 0.2243287563, blue: 0.4410637617, alpha: 1), backgroundColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1), animation: false)
-        
-        cell.addSubview(roundView)
-    }
     
     // MARK: TableView delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -109,8 +84,6 @@ class StatsTableViewController: UIViewController, UITableViewDelegate, UITableVi
             
             performSegue(withIdentifier: "toKanjiDetailStats", sender: nil)
         }
-        
-        
         
     }
     

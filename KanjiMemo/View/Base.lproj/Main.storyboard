@@ -635,14 +635,14 @@ used</string>
                                 <color key="separatorColor" red="0.16296869520000001" green="0.12995296719999999" blue="0.35688269140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="KanjiCell" id="PId-UT-qjV" customClass="KanjiTableViewCell" customModule="KanjiMemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="73"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="73.333335876464844"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PId-UT-qjV" id="vcs-4g-Led">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.333335876464844"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="校" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktf-cO-Hra">
-                                                    <rect key="frame" x="16" y="11" width="48" height="51"/>
+                                                    <rect key="frame" x="16.000000000000004" y="11.000000000000004" width="48.333333333333343" height="51.333333333333343"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ktf-cO-Hra" secondAttribute="height" multiplier="32:34" id="rdd-IL-lji"/>
                                                     </constraints>
@@ -651,7 +651,7 @@ used</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMz-C3-w3A">
-                                                    <rect key="frame" x="84" y="11" width="175" height="25"/>
+                                                    <rect key="frame" x="84.333333333333329" y="11" width="174.66666666666669" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="3fF-Qy-Ywe"/>
                                                     </constraints>
@@ -660,7 +660,7 @@ used</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kana" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27j-AG-tmU">
-                                                    <rect key="frame" x="84" y="38" width="191" height="25"/>
+                                                    <rect key="frame" x="84.333333333333329" y="38.333333333333336" width="190.66666666666669" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="z80-jI-39B"/>
                                                     </constraints>
@@ -669,7 +669,7 @@ used</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lOI-fa-mhq">
-                                                    <rect key="frame" x="300" y="21" width="51" height="31"/>
+                                                    <rect key="frame" x="300" y="21.333333333333329" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.16296869520000001" green="0.12995296719999999" blue="0.35688269140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="thumbTintColor" red="0.9368245006" green="0.90652465820000006" blue="0.86666172740000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </switch>
