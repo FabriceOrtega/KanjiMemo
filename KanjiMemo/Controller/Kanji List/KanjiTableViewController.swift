@@ -77,6 +77,9 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //Dismiss the keyboard
         kanjiTableView.keyboardDismissMode = .onDrag
+        
+        //Change icon in text for showSelectedButton if iOS<13
+        changeShowSelectedButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -185,6 +188,16 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    // Method to change the logo of button if iOS <13
+    func changeShowSelectedButton() {
+        // Hide button id iOS 13 or more
+        if #available(iOS 13, *) {
+            // Do nothing
+        } else {
+            showSelectedKanjiButtonOutlet.setTitle("( O)", for: .normal)
+        }
+    }
+    
     
     // MARK: Table view data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -237,6 +250,14 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
         // Compare list of activated kanji with actual kanji to activate switch for reusable cell
         if CardCreator.cardCreator.listActivatedKAnji.contains(kanjiFromThisCell) {
             cell.kanjiSwitch.isOn = true
+        }
+        
+        // Change switch color if iOS < 13
+        if #available(iOS 13, *) {
+            //Do nothing
+        } else {
+            cell.kanjiSwitch.tintColor = #colorLiteral(red: 0.276517272, green: 0.2243287563, blue: 0.4410637617, alpha: 1)
+            cell.kanjiSwitch.thumbTintColor = #colorLiteral(red: 0.819682493, green: 0.7896436244, blue: 0.7576106854, alpha: 1)
         }
         
         // Attribute Kanji
@@ -333,6 +354,11 @@ class KanjiTableViewController: UIViewController, UITableViewDelegate, UITableVi
             detailVC.kanjiDetailData = kanjiDetailData
         }
     }
+    
+    //Unwid for iOS < 13
+    @IBAction func unwindToKanjiTableVC(_ unwindSegue: UIStoryboardSegue) {
+    }
+    
     
 }
 

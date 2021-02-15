@@ -20,8 +20,14 @@ class KanjiDetailViewController: UIViewController {
     @IBOutlet weak var onLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
+    // Outlet for back button for iOS < 13 only
+    @IBOutlet weak var backButtonOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // show back button if iOS < 13
+        showBackButton()
         
         // Call the method to update labels
         attributeLables()
@@ -45,5 +51,19 @@ class KanjiDetailViewController: UIViewController {
         onLabel.text = onString
         nameLabel.text = nameString
     }
+    
+    func showBackButton() {
+        // Hide button id iOS 13 or more
+        if #available(iOS 13, *) {
+            backButtonOutlet.isHidden = true
+        } else {
+            backButtonOutlet.isHidden = false
+        }
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToKanjiTableVC", sender: self)
+    }
+    
 
 }

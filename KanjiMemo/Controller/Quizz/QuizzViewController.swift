@@ -47,6 +47,11 @@ class QuizzViewController: UIViewController {
     }
     
     
+    // unwid method used bu back button of the shareVC only for iOS<13
+    @IBAction func unwindToQuizz(_ unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
     //Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toQuizzCard" {
